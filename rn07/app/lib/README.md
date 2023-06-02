@@ -1,11 +1,22 @@
 # 라이브러리 관련 코드를 작성하는곳
 
 ## config
-api 주소 및 react native 환경설정
-base url에는 base api 주소가 들어갑니다.
-꼭 확인해주세요. 
-react-native-config는 오류 추적이 어려울 가능성이 있어 잠시 보류하였습니다.
-추후 개발예정입니다.
+- api 주소 및 react native 환경설정
+
+
+- base url에는 base api 주소가 들어갑니다.
+
+
+- debugKey에는 백엔드에 보내는 debugkey를 넣어주시면 됩니다.
+
+
+- 꼭 확인해주세요. 
+
+
+- react-native-config는 오류 추적이 어려울 가능성이 있어 잠시 보류하였습니다.
+
+
+- 추후 개발예정입니다.
 
 ## reactQueryClient
 index.ts 
