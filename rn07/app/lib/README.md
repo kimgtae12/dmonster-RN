@@ -67,9 +67,18 @@ reactQuery.ts
 ```
 const [cashingData, setCashingData] = React.useState<object>({});
 
+
+//사진이 없는 일반 object형태의 파라미터일 경우
 const getMutation = usePostMutation(
     'someKey' // key이름은 캐시에 저장할때 사용할 키이름을 지정해주시면 됩니다.
     'api주소' //baseUrl에 지정해둔 주소를 제외한 나머지 주소를 입력해주시면 됩니다. ex. '/hi/someApiUrl.php'
+);
+
+//사진데이터가 포함되어있는 object형태의 파라미터일 경우
+const getMutation = usePostMutation(
+    'someKey' // key이름은 캐시에 저장할때 사용할 키이름을 지정해주시면 됩니다.
+    'api주소' //baseUrl에 지정해둔 주소를 제외한 나머지 주소를 입력해주시면 됩니다. ex. '/hi/someApiUrl.php',
+    true, //formData로 변환이 필요할경우 true로 선언해주시면 배열및 사진데이터가 자동으로 formData로 전송되도록 설계하였습니다.
 );
 
 const getDataHandler = async () => { //mutation은 반드시 비동기처리로 처리해주셔야합니다.
