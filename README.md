@@ -1,37 +1,56 @@
-# Fast React Native Template 0.71.x
+# Fast React Native Template for Seonpark
 
-빠르게 개발을 하기위해 만든 템플릿입니다.
+빠른 개발을 위해 자주 사용하는 라이브러리를 합쳐놓았습니다.
 
-## How to use
+## Base Source By
+https://github.com/pksung1/fast-react-native
+https://github.com/pksung1
 
+## Editor By
+Dmonster 김경태
+
+## How To Start?
 ```
-npx react-native init [AppName] --template https://github.com/pksung1/fast-react-native.git
+npx react-native init [AppName] --template https://github.com/kimgtae12/dmonster-rn.git
 ```
+
+## Applied Version
+React Native 0.71.3
+
+## Folder Architecture
+- @/assets : 이미지, lottie 를 관리합니다.
+- @/components : 앱의 컴포넌트를 관리합니다.
+  - /atoms : 기본 컴포넌트를 모아두었습니다
+  - /molecules : 기본 컴포넌트를 활용해 만든 순수 컴포넌트입니다.
+  - /organisms : atom, molecules 를 활용해 만든 컴포넌트입니다. (헤더, 푸터 등)
+  - /screens : navigation 에서 사용되는 스크린입니다.
+- @/hooks : react hooks 를 관리합니다. (타어머 등..)
+- @/i18n : 다국어를 관리합니다.
+- @/lib : 라이브러리를 생성하거나 관리합니다.
+- @/navigation : 네비게이션 코드를 작성합니다.
+- @/store : 앱 상태관리를 위한 redux store 입니다.
+- @/themes : 테마 색상, 폰트등을 관리합니다.
 
 ## Tech Stack
 
 ### Language
 - [Typescript](https://www.typescriptlang.org/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
 
-### State Management
-- [Zustand](https://github.com/pmndrs/zustand)
+### Data store FLUX 패턴을 위한 데이터관리
+- [redux-toolkit](https://redux-toolkit.js.org/)
 
-### Navigation
-- [React Navigation](https://reactnavigation.org/)
+### API Fetch 비동기 요청 처리
+- [redux-thunk with redux-toolkit](https://redux-toolkit.js.org/api/createAsyncThunk)
 
-### UI
-- [React Hook Form](https://react-hook-form.com/)
+### Navigation 앱 라우팅 작업
+- [react-navigation 6.x](https://reactnavigation.org/)
+- [react-navigation/native-stack](https://reactnavigation.org/docs/native-stack-navigator)
+- [react-navigation/material-top-tabs](https://reactnavigation.org/docs/material-top-tab-navigator)
 
-### Data Fetch / Cache
-
-- [Axios](https://axios-http.com/kr/docs/intro)
-- [React Query v5](https://tanstack.com/query/v5/docs/react/overview)
-
-### Local Storage
-- [Async Storage](https://react-native-async-storage.github.io/async-storage/docs/install/)
-
-### Localize
+### Localization 다국어 지원
 - [i18n-js](https://github.com/fnando/i18n-js)
 - [react-native-localize](https://github.com/zoontek/react-native-localize)
+
+### More
+- [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen) 스플래시 스크린 커스터마이징
+
