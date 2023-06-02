@@ -1,6 +1,16 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
+project.ext.envConfigFiles = [
+    developdebug: "env/.env.development",
+    developrelease: "env/.env.development", 
+    // stagedebug: "env/.env.stage",
+    // stagerelease: "env/.env.stage",
+    // productdebug: "env/.env.product",    
+    // productrelease: "env/.env.product",
+    anothercustombuild: ".env",
+]
+
 import com.android.build.OutputFile
 
 /**
@@ -166,5 +176,7 @@ dependencies {
         implementation jscFlavor
     }
 }
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 const RootStack = createNativeStackNavigator();
 
-export default () => (
+export default () => ( //Router 역활을 합니다.
   <NavigationContainer>
     <RootStack.Navigator initialRouteName="auth">
       <RootStack.Screen name="auth" component={AuthNavigator} />
