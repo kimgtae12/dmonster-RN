@@ -20,13 +20,25 @@ reactQuery.ts
 - useQuery와 useMutation을 사용할 수 있습니다.
 
 - useQuery
+
+
   ㄴ서버로부터 데이터를 조회해올때 사용합니다.( get 요청이라고 생각하시면 됩니다. )
+
+
   ㄴhook으로 작동되어 컴포넌트의 최상위 스코프에 선언합니다.
+
+
   ㄴdata, isLoading, isError, refetch등을 지원하며, 더 많은 기능은 https://tanstack.com/query/v3/docs/react/overview 를 참조해주세요.
 
 -useMutation
+
+
   ㄴ서버의 데이터를 조작할때 사용합니다. ( post 요청이라고 생각하시면 됩니다.)
+
+
   ㄴmutation을 변수에 담아두고 비동기처리로 사용하여야 합니다. ex. async await , promise
+
+  
   ㄴ컴포넌트 최상위 스코프에 useMutation을 선언하였다면, 해당 변수를 이용해 어떤 스코프에서도 사용이 가능합니다.
 
 - fetch를 사용하지 않고, axios post를 이용해 구현해두었습니다.
