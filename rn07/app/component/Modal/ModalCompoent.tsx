@@ -10,16 +10,19 @@ export default function ModalCompoent({
   type = 'basic',
   fontSize = 16,
   text = '모달입니다.',
-  leftText = '닫기',
+  leftText = '취소',
   rightText = '확인',
   rightOnPress = () => {},
 }) {
   //content           : 배경색
   //visible           : 모달 visible
   //close             : 닫힘 event
-  //type              : 기본 or 커스텀 (basic | custom)
-  //fontSize          : basic type fontsize
-  //text              : basic type text
+  //type              : 기본 or 커스텀 (basic | custom | confirm)
+  //fontSize          : 폰트 크기
+  //text              : 모달 내용
+  //leftText          : type 'confirm'일때 왼쪽 버튼 text
+  //rightText         : type 'basic'일땐 버튼 text, 'confirm'일땐 오른쪽 버튼
+  //rightOnPress      : type 'confirm'일때 오른쪽 버튼 이벤트
 
   //State를 이용하여 Modal을 제어함
   const [isModalVisible, setModalVisible] = useState(false);
@@ -58,7 +61,7 @@ export default function ModalCompoent({
               </Text>
             </View>
             <ButtonComponent
-              value={'확인'}
+              value={rightText}
               borderColor={'black'}
               backgroundColor={'black'}
               color={'#fff'}
