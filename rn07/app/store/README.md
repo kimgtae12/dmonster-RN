@@ -68,7 +68,7 @@ export function increaseBearCom(){
 
 
 ```
-LocalStorage
+Fure AsyncStorage
 -setAsyncStorage 및 getAsyncStorage를 통해 데이터를 가져옵니다.
 -getAsyncStorage를 사용할땐 promise 또는 async await와 같은 비동기처리로 데이터를 가져옵니다.
 -반드시 데이터를 가져오면 각컴포넌트 state 또는 redux에 dispatch 시켜줘야합니다.
