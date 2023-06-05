@@ -64,7 +64,7 @@ export function increaseBearCom(){
 - zustand의 미들웨어중 하나인 persist 및 createJsonStorage를 이용한 AsyncStorage 저장 방법론을 예시로 작성해둔 코드입니다.
 
 
-- 기존 localStorage와의 차이점은 다음과 같습니다.
+- 기존 asyncStorage와의 차이점은 다음과 같습니다.
 
 
 ```
