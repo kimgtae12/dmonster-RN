@@ -1,8 +1,9 @@
 import {AuthStackProps} from '@/navigation/auth';
 import {useBearStore, useCountPersistStore} from '@/store';
-import React from 'react';
+import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {View, TextInput, Button, Text} from 'react-native';
+import {View, TextInput, Button, Text, TouchableOpacity} from 'react-native';
+import ModalOne from '@/component/Modal/ModalOne';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -14,6 +15,8 @@ interface LoginForm {
 const LoginScreen = ({navigation}: AuthStackProps) => {
   const {increasePopulation, bears} = useBearStore(state => state);
   const {count, increase} = useCountPersistStore(state => state);
+
+  const [modal, setModal] = useState(false);
 
   const {control, handleSubmit} = useForm<LoginForm>({
     defaultValues: {
@@ -82,6 +85,8 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
         <Button title="Increase Persist Count" onPress={increase} />
         <Text>{count}</Text>
       </View>
+      <Button title="모달 open" onPress={() => setModal(true)} />
+      <ModalOne visible={modal} close={() => setModal(false)} />
     </View>
   );
 };
