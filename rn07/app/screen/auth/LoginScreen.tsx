@@ -76,7 +76,7 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
       <View style={{marginTop: 20}}>
         <Button
           title="Increase Bears"
-          onPress={() => increasePopulation(bears + 1)}
+          onPress={() => increasePopulation(3)}
         />
         <Text>{bears}</Text>
       </View>
