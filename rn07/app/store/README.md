@@ -28,7 +28,7 @@ Zustand
 ㄴ 한 개의 중앙에 집중된 형식의 스토어 구조를 사용합니다. 물론 Store를 여러개 만든다고 충돌현상이 발생하지 않습니다. (Store가 독립적입니다.)
 ㄴ React에 의존하지 않기때문에 자주바뀌는 상태를 직접제어할수있는 방법론을 제시해줍니다.
 ㄴ 무엇보다 코드가 상당히 간결합니다. dispatch및 useSelector를 사용하지 않고, store에서 직접 데이터 및 메서드를 호출합니다.
-
+ㄴ creatStore 내부터에서 api 호출이 가능합니다. ( axios )
 ```
 
 
@@ -43,19 +43,40 @@ Zustand
 // BearStore.ts
 export const useBearStore = create<BearState>(set => ({ //store 생성
   bears: 0, //초기 state값
-  increasePopulation: (bearCount) => set(state => ({bears: state.bears + bearCount})), //해당 훅은 컴포넌트에서 실행합니다. 
+  increasePopulation: (bearCount) => set(state => ({bears: state.bears + bearCount})), //해당 method는 컴포넌트에서 실행합니다. 
   removeAllBears: () => set({bears: 0}),
 }));
 
 // Component.tsx
 export function increaseBearCom(){
 
-  const {bears, increasePopulation} = useBearStore(state => state); //store에서 hook 및 state를 구조분해할당으로 선언합니다.
+  const {bears, increasePopulation} = useBearStore(state => state); //store에서 method 및 state를 구조분해할당으로 선언합니다.
 
   function increaseCountHandler(bearCount){ //count handler 생성
-    const increaseCount = increasePopulation(bearCount) //useBearStore에서 선언된 hook을 호출하여 실행합니다. 이때 파라미터는 store에 선언된 함수의 매개변수로 전달됩니다.
+    const increaseCount = increasePopulation(bearCount) //useBearStore에서 선언된 method 호출하여 실행합니다. 이때 파라미터는 store에 선언된 함수의 매개변수로 전달됩니다.
   }
 
   return <TouchableOpacity onPress={()=>{increaseCountHandler(bear+2)}}><Text>bear count!!!!<Text></TouchableOpacity>
 }
+```
+
+## CountPersistStore.ts
+- zustand의 미들웨어중 하나인 persist 및 createJsonStorage를 이용한 AsyncStorage 저장 방법론을 예시로 작성해둔 코드입니다.
+
+
+- 기존 localStorage와의 차이점은 다음과 같습니다.
+
+
+```
+LocalStorage
+-setAsyncStorage 및 getAsyncStorage를 통해 데이터를 가져옵니다.
+-getAsyncStorage를 사용할땐 promise 또는 async await와 같은 비동기처리로 데이터를 가져옵니다.
+-반드시 데이터를 가져오면 각컴포넌트 state 또는 redux에 dispatch 시켜줘야합니다.
+
+Zustand Persist with AsyncStorage
+-persist 내부에서 set 및 get 함수를 지원합니다.
+-get함수를 통해 persist내부에 선언해둔 state의 데이터를 호출 할 수 있습니다. ex) get().count
+-set함수를 실행하면 자동으로 asyncStorage에 저장이 됩니다. 이때 내부 state를 변화시킬때는 객체상태로 수정해줍니다. ex) set({count : count+1}); 
+-앱을 껐다키면 dispatch 및 selector를 호출할 필요없이 자동으로 persist 내부 state에 데이터가 저장되어 각 컴포넌트에서 바로 사용이 가능합니다.
+
 ```
