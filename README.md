@@ -7,7 +7,7 @@ https://github.com/pksung1/fast-react-native
 https://github.com/pksung1
 
 ## Editor By
-Dmonster 김경태
+Dmonster 김경태,김효진,이예은
 
 ## How To Start?
 ```
