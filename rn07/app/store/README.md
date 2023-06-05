@@ -1,6 +1,10 @@
 # zustand
 - https://github.com/pmndrs/zustand
 
+```
+npm install zustand # or yarn add zustand or pnpm add zustand
+```
+
 
 - 독일어로 '상태'라는 뜻을 가진 라이브러리 입니다.
 
