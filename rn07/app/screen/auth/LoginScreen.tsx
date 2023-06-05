@@ -3,7 +3,7 @@ import {useBearStore, useCountPersistStore} from '@/store';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {View, TextInput, Button, Text, TouchableOpacity} from 'react-native';
-import ModalOne from '@/component/Modal/ModalOne';
+import ModalCompoent from '../../component/Modal/ModalCompoent';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -86,7 +86,12 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
         <Text>{count}</Text>
       </View>
       <Button title="모달 open" onPress={() => setModal(true)} />
-      <ModalOne visible={modal} close={() => setModal(false)} />
+      <ModalCompoent
+        visible={modal}
+        close={() => setModal(false)}
+        type={'confirm'}
+        rightOnPress={() => console.log('오른쪽 버튼 클릭')}
+      />
     </View>
   );
 };

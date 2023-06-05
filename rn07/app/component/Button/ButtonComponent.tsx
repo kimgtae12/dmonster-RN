@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default function ButtonComponents({
+export default function ButtonComponent({
   backgroundColor = 'black',
   borderRadius = 8,
   borderColor = '#A0ACC9',
