@@ -13,8 +13,8 @@ interface LoginForm {
 }
 
 const LoginScreen = ({navigation}: AuthStackProps) => {
-  const {increasePopulation, bears} = useBearStore(state => state);
-  const {count, increase} = useCountPersistStore(state => state);
+  const {increasePopulation, bears} = useBearStore(state => state); //bearStore에서 생성한 store 정보를 가져옵니다.
+  const {count, increase} = useCountPersistStore(state => state); //zustand persist에서 생성한 state및 생신 메서드를 가져옵니다.
 
   const [modal, setModal] = useState(false);
 
@@ -76,13 +76,13 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
       <View style={{marginTop: 20}}>
         <Button
           title="Increase Bears"
-          onPress={() => increasePopulation(3)}
+          onPress={() => increasePopulation(3)} //bearStore 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다.
         />
         <Text>{bears}</Text>
       </View>
 
       <View style={{marginTop: 20}}>
-        <Button title="Increase Persist Count" onPress={increase} />
+        <Button title="Increase Persist Count" onPress={increase} /> {/** zustand persist 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다. */}
         <Text>{count}</Text>
       </View>
       <Button title="모달 open" onPress={() => setModal(true)} />
