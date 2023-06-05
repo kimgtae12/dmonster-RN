@@ -4,6 +4,8 @@
 
 ModalComponent.tsx
 
+`npm i react-native-modal` 또는 `yarn add react-native-modal`가 필요합니다.
+
 - react-native-modal을 import 해야 사용이 가능합니다.
 
   `import Modal from "react-native-modal";`
@@ -45,6 +47,8 @@ ModalComponent.tsx
 
 ButtonComponent.tsx
 
+`npm i react-native-toast-message` 또는 `yarn add react-native-toast-message`가 필요합니다.
+
 - props 설명
 
   - **btnPress** : 버튼 이벤트 함수입니다.
@@ -52,3 +56,40 @@ ButtonComponent.tsx
     모달을 호출한 부모 컴포넌트에서 선언하여 props로 전달 받습니다.
 
   - **value** : 버튼에 들어갈 text입니다.
+
+## Toast
+
+App.tsx에서 Toast를 추가해야합니다.
+
+```
+<QueryClientProvider client={queryClient}>
+    <AppNavigation />
+    <Toast config={toastConfig} />  //추가해야합니다.
+</QueryClientProvider>
+```
+
+필요한 페이지에서 선언해주면 됩니다.
+
+```
+ cusToast('커스텀 토스트', 4000, 'bottom', 50)
+```
+
+- CustomToast 설명
+
+  - **type** : ToastConfig.tsx에서 불러올 type props입니다. 'custom_type'
+
+  - **position** : Toast 위치설정입니다. type 은 'top' / 'bottom'입니다.
+
+    설정을 안하면 'bottom'에 위치됩니다.
+
+  - **text1** : 토스트 메세지 입니다. 필수로 입력해야 하는 값입니다.
+
+  - **visibilityTime** : Toast가 자동으로 숨겨지는 시간(밀리초)입니다. autoHide 소품이 true로 설정된 경우에만 효과가 있습니다.
+
+  - **autoHide** : true인 경우 표시되는 Toast는 visibilityTime 소품에 지정된 특정 시간(밀리초) 후에 자동으로 숨겨집니다.
+
+  - **bottomOffset** : postion이 bottom일때 작동됩니다. 화면 하단으로부터의 오프셋(px 단위)입니다.
+
+  text1만 입력해도 됩니다.
+
+- 더 많은 기능은 <https://github.com/calintamas/react-native-toast-message>를 참조해주세요.
