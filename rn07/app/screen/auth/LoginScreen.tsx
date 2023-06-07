@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {View, TextInput, Button, Text, TouchableOpacity} from 'react-native';
 import ModalCompoent from '../../component/Modal/ModalCompoent';
+import cusToast from '@/component/Toast/CustomToast';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -82,7 +83,8 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
       </View>
 
       <View style={{marginTop: 20}}>
-        <Button title="Increase Persist Count" onPress={increase} /> {/** zustand persist 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다. */}
+        <Button title="Increase Persist Count" onPress={increase} />
+        {/** zustand persist 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다. */}
         <Text>{count}</Text>
       </View>
       <Button title="모달 open" onPress={() => setModal(true)} />
@@ -91,6 +93,14 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
         close={() => setModal(false)}
         type={'confirm'}
         rightOnPress={() => console.log('오른쪽 버튼 클릭')}
+      />
+      <Button
+        title="토스트 open"
+        onPress={() => cusToast('커스텀 토스트', 4000, 'bottom', 50)}
+      />
+      <Button
+        title="테스트 페이지"
+        onPress={() => navigation.navigate('TestPage')}
       />
     </View>
   );

@@ -93,3 +93,34 @@ App.tsx에서 Toast를 추가해야합니다.
   text1만 입력해도 됩니다.
 
 - 더 많은 기능은 <https://github.com/calintamas/react-native-toast-message>를 참조해주세요.
+
+## Header
+
+- 예시
+
+```
+ <HeaderComponents
+    backButton={true}
+    title={'TestPage'}
+    alramButton={true}
+    navigation={navigation}
+/>
+```
+
+- 설명
+
+  - **backButton** : true이면 뒤로가기 버튼이 작동됩니다.
+
+  - **closeButton** : true이면 닫기 버튼이 작동됩니다.
+
+  - **alramButton** : true이면 알림 버튼이 작동됩니다.
+
+  - **title** : Header 제목입니다.
+
+  - **backgroundColor** : 헤더 배경색입니다.
+
+  - **close** : 왼쪽 버튼의 닫기 event입니다. 부모 컴포넌트에서 선언한 함수를 props로 전달 받아서 사용합니다.
+
+  - **Fontcolor** : 헤더의 폰트 컬러입니다.
+
+  - **RightOnPress** : 오른쪽 버튼 event입니다. 부모 컴포넌트에서 생성후 props로 전달합니다.
