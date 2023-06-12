@@ -43,6 +43,16 @@ ModalComponent.tsx
 
 - isVisible, onBackButtonPress, onBackdropPress등을 지원하며, 더 많은 기능은 <https://github.com/react-native-modal/react-native-modal> 를 참조해주세요.
 
+
+LoadingModal.tsx
+ - 사용 패키지 : react-native-modal
+
+ 
+ - props 설명
+
+   - **visible** : 부모 컴포넌트에서 props로 받아온 boolean값으로 작동합니다.
+
+    modal의 visible 속성을 관리합니다.
 ## Button
 
 ButtonComponent.tsx
@@ -93,3 +103,11 @@ App.tsx에서 Toast를 추가해야합니다.
   text1만 입력해도 됩니다.
 
 - 더 많은 기능은 <https://github.com/calintamas/react-native-toast-message>를 참조해주세요.
+
+## Interface
+- interface 관련 컴포넌트가 작성됩니다.
+
+- MarginComponent.tsx
+
+  ㄴ 컴포넌트 사이 margin을 넣어줄때 사용합니다. props는 mt(marginTop) mb(marginBottom) my(marginVertical)을 넣어줍니다.
+  ㄴ 타입은 undefined를 허용해두어서, 사용하고자하는 수치만 작성해주시면 됩니다.
