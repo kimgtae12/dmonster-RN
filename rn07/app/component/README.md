@@ -104,6 +104,38 @@ App.tsx에서 Toast를 추가해야합니다.
 
 - 더 많은 기능은 <https://github.com/calintamas/react-native-toast-message>를 참조해주세요.
 
+## Header
+
+- 예시
+
+```
+ <HeaderComponents
+    backButton={true}
+    title={'TestPage'}
+    alramButton={true}
+    navigation={navigation}
+/>
+```
+
+- 설명
+
+  - **backButton** : true이면 뒤로가기 버튼이 작동됩니다.
+
+  - **closeButton** : true이면 닫기 버튼이 작동됩니다.
+
+  - **alramButton** : true이면 알림 버튼이 작동됩니다.
+
+  - **title** : Header 제목입니다.
+
+  - **backgroundColor** : 헤더 배경색입니다.
+
+  - **close** : 왼쪽 버튼의 닫기 event입니다. 부모 컴포넌트에서 선언한 함수를 props로 전달 받아서 사용합니다.
+
+  - **Fontcolor** : 헤더의 폰트 컬러입니다.
+
+  - **RightOnPress** : 오른쪽 버튼 event입니다. 부모 컴포넌트에서 생성후 props로 전달합니다.
+
+
 ## Interface
 - interface 관련 컴포넌트가 작성됩니다.
 
@@ -111,3 +143,4 @@ App.tsx에서 Toast를 추가해야합니다.
 
   ㄴ 컴포넌트 사이 margin을 넣어줄때 사용합니다. props는 mt(marginTop) mb(marginBottom) my(marginVertical)을 넣어줍니다.
   ㄴ 타입은 undefined를 허용해두어서, 사용하고자하는 수치만 작성해주시면 됩니다.
+
