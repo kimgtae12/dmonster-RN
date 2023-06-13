@@ -6,7 +6,5 @@ export type  NavigationListType = {
 }
 
 export type StackPropsType = NativeStackScreenProps<
-    NavigationListType,
-    'Login',
-    'Signup'
+    NavigationListType
 >
