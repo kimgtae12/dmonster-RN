@@ -3,7 +3,7 @@ import {useBearStore, useCountPersistStore} from '@/store';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {View, TextInput, Button, Text, TouchableOpacity} from 'react-native';
-import ModalCompoent from '../../component/Modal/ModalCompoent';
+import ModalCompoent from '@/component/Modal/ModalCompoent';
 import cusToast from '@/component/Toast/CustomToast';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
