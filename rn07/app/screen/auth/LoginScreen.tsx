@@ -2,11 +2,13 @@
 import {useBearStore, useCountPersistStore} from '@/store';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
+
 import {View, TextInput, Button, Text, TouchableOpacity,ScrollView} from 'react-native';
 import ModalCompoent from '../../component/Modal/ModalCompoent';
 import { useLoadingStore } from '@/store/BearStore';
 import { LoadingModal } from '@/component/Modal/LoadingModal';
 import { StackPropsType } from '@/navigation/navigationType';
+import cusToast from '@/component/Toast/CustomToast';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -118,6 +120,15 @@ const LoginScreen = ({navigation}: StackPropsType) => {
         type={'confirm'}
         rightOnPress={() => console.log('오른쪽 버튼 클릭')}
       />
+      <Button
+        title="토스트 open"
+        onPress={() => cusToast('커스텀 토스트', 4000, 'bottom', 50)}
+      />
+      <Button
+        title="테스트 페이지"
+        onPress={() => navigation.navigate('TestPage')}
+      />
+    </View>
 
       {/* Loading Modal Component */}
       <LoadingModal 
