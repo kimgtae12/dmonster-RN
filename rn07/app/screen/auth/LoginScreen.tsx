@@ -1,4 +1,4 @@
-import {AuthStackProps} from '@/navigation/auth';
+
 import {useBearStore, useCountPersistStore} from '@/store';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
@@ -6,6 +6,7 @@ import {View, TextInput, Button, Text, TouchableOpacity,ScrollView} from 'react-
 import ModalCompoent from '../../component/Modal/ModalCompoent';
 import { useLoadingStore } from '@/store/BearStore';
 import { LoadingModal } from '@/component/Modal/LoadingModal';
+import { StackPropsType } from '@/navigation/navigationType';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -14,7 +15,7 @@ interface LoginForm {
   password: string;
 }
 
-const LoginScreen = ({navigation}: AuthStackProps) => {
+const LoginScreen = ({navigation}: StackPropsType) => {
 
   const {increasePopulation, bears} = useBearStore(state => state); //bearStore에서 생성한 store 정보를 가져옵니다.
   const {count, increase} = useCountPersistStore(state => state); //zustand persist에서 생성한 state및 생신 메서드를 가져옵니다.
@@ -57,6 +58,10 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
     },1000)
   }
 
+
+  React.useEffect(()=>{
+    console.log(isLoading);
+  },[isLoading])
 
   return (
     <ScrollView style={{flex:1}}>
