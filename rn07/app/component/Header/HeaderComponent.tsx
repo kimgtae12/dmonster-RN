@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useIsFocused} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+import { NavigationListType, StackPropsType } from '@/navigation/navigationType';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export default function HeaderComponents({
   backgroundColor = '#FFF',
@@ -16,7 +18,6 @@ export default function HeaderComponents({
   alramButton = false,
   title = '',
   // right = null,
-  navigation,
   close = () => {},
   Fontcolor = '#212121',
   RightOnPress = () => {},
@@ -30,36 +31,36 @@ export default function HeaderComponents({
   //Fontcolor         : 폰트 컬러
   //RightOnPress      : 오른쪽 버튼 event
 
+  const navigation = useNavigation();
+
   const HandleGoBack = () => {
     navigation.goBack();
   };
 
   return (
     <View style={{...styles.Container, backgroundColor: backgroundColor}}>
-      {/* 왼쪽 */}
+      {/** 왼쪽 */}
       <View style={styles.leftContainer}>
         {backButton && (
           <TouchableOpacity onPress={() => HandleGoBack()} hitSlop={15}>
-            <Text>뒤로가기</Text> {/* 사용하실때 제거해주세요. */}
-            {/* 이미지를 넣어주세요 */}
+            <Text>뒤로가기 {/** 사용하실때 제거해주세요. */} </Text>
+            {/* 이미지를 넣어주세요. */}
             {/* <Image source={require('../Assets/Images/ico_back.png')} style={styles.leftIcon} /> */}
           </TouchableOpacity>
         )}
         {closeButton && (
           <TouchableOpacity onPress={close} hitSlop={15}>
-            <Text>닫기</Text> {/* 사용하실때 제거해주세요. */}
-            {/* 이미지를 넣어주세요 */}
-            {/* <Image source={require('../Assets/Images/ico_x.png')} style={styles.leftIcon} /> */}
+            <Text>닫기</Text> 
           </TouchableOpacity>
         )}
       </View>
-      {/* 중간 text */}
+      {/** 중간 text */}
       <View style={styles.centerContainer}>
         <Text style={{...styles.Title, color: Fontcolor}}>{title}</Text>
       </View>
-      {/* 오른쪽 */}
+      {/** 오른쪽 */}
       <View style={styles.RightContainer}>
-        {/* {right && right} */}
+        {/** {right && right} */}
         {alramButton && (
           <TouchableOpacity hitSlop={15} onPress={RightOnPress}>
             <Text>알림</Text>

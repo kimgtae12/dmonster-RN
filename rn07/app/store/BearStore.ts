@@ -18,8 +18,9 @@ const useBearStore = create<BearState>(set => ({ //store 생성
 }));
 
 const useLoadingStore = create<LoadingState>(set => ({
-  isLoading : false,
-  toggleLoading : (loading) => set(state => ({isLoading : loading}))
+  isLoading : false, //로딩 초기 상태값 정의
+  toggleLoading : (loading) => set(state => ({isLoading : loading})) //loading update
 }))
+
 
 export {useBearStore , useLoadingStore}; //store export

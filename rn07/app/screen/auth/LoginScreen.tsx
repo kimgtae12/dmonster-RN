@@ -9,6 +9,8 @@ import { useLoadingStore } from '@/store/BearStore';
 import { LoadingModal } from '@/component/Modal/LoadingModal';
 import { StackPropsType } from '@/navigation/navigationType';
 import cusToast from '@/component/Toast/CustomToast';
+import { MarginCom } from '@/theme/styles';
+import { useUserInfoPersistStore } from '@/store/CountPersistStore';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -19,13 +21,8 @@ interface LoginForm {
 
 const LoginScreen = ({navigation}: StackPropsType) => {
 
-  const {increasePopulation, bears} = useBearStore(state => state); //bearStore에서 생성한 store 정보를 가져옵니다.
-  const {count, increase} = useCountPersistStore(state => state); //zustand persist에서 생성한 state및 생신 메서드를 가져옵니다.
-
-  const {isLoading, toggleLoading} = useLoadingStore(state => state);
-
-
-  const [modal, setModal] = useState(false);
+  //user 로그인 정보를 담아둔 Zustand Persist에서 데이터를 가져옵니다.
+  const {mt_id,mt_pw,updateUserInfo} = useUserInfoPersistStore(state => state);
 
   const {control, handleSubmit} = useForm<LoginForm>({
     defaultValues: {
@@ -34,9 +31,11 @@ const LoginScreen = ({navigation}: StackPropsType) => {
     },
   });
   const idpwLogin = ({id, password}: LoginForm) => {
-    console.log(id, password);
-    navigation.navigate('Signup');
+    // console.log(id, password);
+    updateUserInfo({mt_id : id, mt_pw : password}); //Zustand Persist에 선언되어있는 updateUserInfo 메서드를 실행하여, asyncStorage에 저장합니다.
+    navigation.navigate('TestPage');
   };
+
   const snsLogin = (loginType: LoginType) => {
     switch (loginType) {
       case 'kakao':
@@ -52,18 +51,11 @@ const LoginScreen = ({navigation}: StackPropsType) => {
     }
   };
 
-  const loadingControllHandler = () => { //zustand state 관리 예시1)
-    toggleLoading(true); //zustand loading store의 toggleLoading 메서드를 실행시킵니다.
-
-    setTimeout(()=>{ //1초뒤 zustand loading store의 loading state를 false로 처리합니다.
-      toggleLoading(false);
-    },1000)
-  }
-
-
   React.useEffect(()=>{
-    console.log(isLoading);
-  },[isLoading])
+    if(mt_id !== '' && mt_pw !== ''){ //로그인정보가 있다면 바로 테스트페이지로 동동합니다.
+      navigation.navigate('TestPage');
+    }
+  },[])
 
   return (
     <ScrollView style={{flex:1}}>
@@ -77,6 +69,7 @@ const LoginScreen = ({navigation}: StackPropsType) => {
             onChange={e => onChange(e.nativeEvent.text)}
           />
         )}
+        rules={{required:true}}
       />
 
       <Controller
@@ -89,51 +82,19 @@ const LoginScreen = ({navigation}: StackPropsType) => {
             onChange={e => onChange(e.nativeEvent.text)}
           />
         )}
+        rules={{required:true}}
       />
       <Button title="로그인" onPress={handleSubmit(idpwLogin)} />
+      <MarginCom mt={20} />
       <Button title="카카오" onPress={() => snsLogin('kakao')} />
+      <MarginCom mt={10} />
+
       <Button title="구글" onPress={() => snsLogin('google')} />
+      <MarginCom mt={10} />
+
       <Button title="애플" onPress={() => snsLogin('apple')} />
+      <MarginCom mt={10} />
 
-      <View style={{marginTop: 20}}>
-        <Button
-          title="Increase Bears"
-          onPress={() => increasePopulation(3)} //bearStore 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다.
-        />
-        <Text>{bears}</Text>
-      </View>
-      {/**zustand persist 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다 */}
-      <View style={{marginTop: 20}}>
-        <Button title="Increase Persist Count" onPress={increase} /> 
-        <Text>{count}</Text>
-      </View>
-      <Button title="모달 open" onPress={() => setModal(true)} />
-      <Button title="로딩 ModalOpen" onPress={()=>{loadingControllHandler}} />
-
-
-
-
-      {/* Modal component */}
-      <ModalCompoent 
-        visible={modal}
-        close={() => setModal(false)}
-        type={'confirm'}
-        rightOnPress={() => console.log('오른쪽 버튼 클릭')}
-      />
-      <Button
-        title="토스트 open"
-        onPress={() => cusToast('커스텀 토스트', 4000, 'bottom', 50)}
-      />
-      <Button
-        title="테스트 페이지"
-        onPress={() => navigation.navigate('TestPage')}
-      />
-    </View>
-
-      {/* Loading Modal Component */}
-      <LoadingModal 
-        isLoading={isLoading}
-      />
     </ScrollView>
   );
 };
