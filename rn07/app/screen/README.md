@@ -98,3 +98,17 @@ useEffect(() => {
     }
   });
 ```
+
+## 앱 아이콘
+
+### 안드로이드 
+
+- 먼저 1024x1024 사이즈의 이미지를 준비 해 줍니다.
+
+- 안드로이드 스튜디오를 열어 해당 폴더의 android 폴더를 열어줍니다.
+
+- ```[projectName]/app/res``` 폴더에서 마우스 우클릭하여 New > imageAsset 을 실행시켜줍니다.
+
+- Source Asset에서 준비해둔 이미지를 찾아 열어주고 'Next'버튼을 클릭합니다. 
+
+- Res Directory에서 release / main / debug 각각 실행시켜줍니다.
