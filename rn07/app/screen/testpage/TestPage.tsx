@@ -7,9 +7,10 @@ import { LoadingModal } from '@/component/Modal/LoadingModal';
 import { useBearStore, useCountPersistStore } from '@/store';
 import { useLoadingStore } from '@/store/BearStore';
 import cusToast from '@/component/Toast/CustomToast';
-import { MarginCom } from '@/theme/styles';
+import { MarginCom, TextCom } from '@/theme/styles';
 import { useUserInfoPersistStore } from '@/store/CountPersistStore';
 import { BackHandlerCom } from '@/component/BackHandler';
+import { colors } from '@/theme/color';
 
 //Navigation Component이므로 NativeStackScreenProps을 type으로 사용합니다.
 //props는 route 및 navigation을 가져올수있으며, params는 route의 하위객체에 존재합니다. route.params
@@ -48,7 +49,7 @@ const TestPage = ({navigation}:StackPropsType) => {
       />
 
       <View style={{marginTop: 20}}>
-        <Text>Zustand persist에 저장되어있는 로그인정보</Text>
+        <TextCom fontStyle='Light' fontColor={colors.BLACK}>Zustand persist에 저장되어있는 로그인정보</TextCom>
         <MarginCom mt={5} />
         <Text>mt_id : {mt_id}</Text>
         <Text>mt_pw : {mt_pw}</Text>

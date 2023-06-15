@@ -127,7 +127,7 @@ import { BackHandlerCom } from '@/component/BackHandler';
                         }
                     }}
                     listeners={{ //tab 리스너 이벤트를 등록합니다.
-                        tabPress : () => {  //탭을 눌렀을때 발생하는 메서드입니다.
+                        tabPress : (e) => {  //탭을 눌렀을때 발생하는 메서드입니다.
                             setSelIndex(3);
                         }
                     }}

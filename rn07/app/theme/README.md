@@ -4,6 +4,8 @@
 
 - 색상들을 모아두는 파일입니다.
 
+- 색상은 16진수 코드를 넣어주시면 됩니다.
+
 ## styles.ts
 
 - style component를 모아둔 파일입니다.
@@ -58,6 +60,7 @@ export const RefreshMarginCom = styled(MarginCom)`
 ```
 
 - 이렇게 styled옆에 ()안에 재사용할 컴포넌트를 넣어주시면 됩니다. *props 선언도 함께 오게됩니다.
+
 
 
 
