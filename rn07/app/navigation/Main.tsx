@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationListType } from './navigationType';
 import TestPage from '../screen/testpage/TestPage';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIndex } from '@/screen/Home/HomeIndex';
 import { BoardIndex } from '@/screen/Board/BoardIndex';
@@ -19,8 +19,8 @@ import { BackHandlerCom } from '@/component/BackHandler';
 
     return(
         <View style={{flex:1}}>
-            <BackHandlerCom isRoot />
             {/** navigator 를 생성합니다. Bottom Navigation의 최상위 루트라고 생각하시면 됩니다.*/}
+            <BackHandlerCom isRoot />
             <BottomTab.Navigator initialRouteName='Home'>
                 {/** screen에는 bottom Tab에 들어갈 component를 넣어주시면 됩니다. */} 
                 <BottomTab.Screen

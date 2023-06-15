@@ -141,8 +141,33 @@ App.tsx에서 Toast를 추가해야합니다.
 
 ## BackHandler.tsx
 
-- 뒤로가기를 눌렀을때 앱이꺼지는 현상을 방지해주고, 이전스택으로 돌아갈 수 있도록 해줍니다.
+- 뒤로가기를 눌렀을때 앱이 내려가는
+ 현상을 방지해주고, 이전스택으로 돌아갈 수 있도록 해줍니다.
 
 - isRoot가 true일때 뒤로가기를 두번누르면 앱이 종료됩니다.
 
 - 사용한 패키지는 react-native-exit-app 입니다.
+
+- native 설정은 https://github.com/wumke/react-native-exit-app 을 참고해주세요.
+
+- 사용법은 다음과 같습니다.
+```
+//최상위 루트 screen일경우 ex) Home
+export const Main = () => {
+  ...some logic
+
+  return(
+    <BackHandlerCom isRoot />
+  )
+}
+
+//하위 screen 일 경우
+export const MainChildren = () => {
+  ...some logic
+
+  return(
+    <BackHandlerCom />
+    ...some jsx
+  )
+}
+```
