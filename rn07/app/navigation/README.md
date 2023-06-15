@@ -82,3 +82,52 @@ export const SomeComponent = (props : StackPropsType) => {
 }
 
 ```
+
+## Router.tsx
+- 로그인 페이지를 제외한 Screen Router를 관리하는 라우터 입니다.
+
+## Main.tsx
+- Bottom Navigation이 존재하는 Router상 ROOT page 입니다.
+
+
+- Bottom Navigation을 사용하기 위해서는 @react-navigation/bottom-tabs 패키지 설치가 필요합니다.
+```
+npm install or yarn add @react-navigation/bottom-tabs
+```
+
+- Stack Navigation과 거의 비슷한 로직으로 작동합니다.
+
+```
+
+    <BottomTab.Navigator initialRouteName='Home'> //navigator를 생성합니다. Bottom Navigation의 최상위 루트라고 생각하시면 됩니다.
+        <BottomTab.Screen
+            name="Home"
+            component={HomeIndex}
+            options={{headerShown:false}}
+        />
+        <BottomTab.Screen
+            name="Board"
+            component={BoardIndex}
+            options={{headerShown:false}}
+        />
+        <BottomTab.Screen
+            name="Shop"
+            component={ShopIndex}
+            options={{headerShown:false}}
+        />
+        <BottomTab.Screen
+            name="MyPage"
+            component={MypageIndex}
+            options={{headerShown:false}}
+        />
+
+    </BottomTab.Navigator>
+
+```
+
+- assets/image에 있는 b_menu1~4 이미지만 바꿔주시면 이미지가 그대로 적용되어 bottom tab이 생성됩니다.
+
+
+- bottom tab을 추가하실경우 똑같이 Screen만 늘려주시면 됩니다.
+
+

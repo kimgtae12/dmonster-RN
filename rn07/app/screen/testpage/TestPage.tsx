@@ -9,6 +9,7 @@ import { useLoadingStore } from '@/store/BearStore';
 import cusToast from '@/component/Toast/CustomToast';
 import { MarginCom } from '@/theme/styles';
 import { useUserInfoPersistStore } from '@/store/CountPersistStore';
+import { BackHandlerCom } from '@/component/BackHandler';
 
 //Navigation Component이므로 NativeStackScreenProps을 type으로 사용합니다.
 //props는 route 및 navigation을 가져올수있으며, params는 route의 하위객체에 존재합니다. route.params
@@ -37,6 +38,7 @@ const TestPage = ({navigation}:StackPropsType) => {
 
   return (
     <View>
+      <BackHandlerCom isRoot={false} />
       <HeaderComponents
         backButton={true}
         // closeButton={true}
@@ -57,9 +59,6 @@ const TestPage = ({navigation}:StackPropsType) => {
         />
       </View>
 
-
-      
-      
       <View style={{marginTop: 20}}>
         <Text>Zustand 상태 업데이트</Text>
         <MarginCom mt={5} />
@@ -95,8 +94,8 @@ const TestPage = ({navigation}:StackPropsType) => {
       />
       <MarginCom mt={20} />
       <Button
-        title="테스트 페이지"
-        onPress={() => navigation.navigate('TestPage')}
+        title="메인으로"
+        onPress={() => navigation.navigate('Main')}
       />
     {/* </View> */}
 
@@ -104,6 +103,8 @@ const TestPage = ({navigation}:StackPropsType) => {
       <LoadingModal 
         isLoading={isLoading}
       />
+    
+      
 
     </View>
   )

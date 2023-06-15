@@ -7,6 +7,11 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 * key뒤에 ?를 붙일경우 undefined가 허용됩니다. ex) mt_email? : string
 */
 
+export type RootNavigationListType = {
+    auth : undefined,
+    Router : undefined,
+}
+
 export type  NavigationListType = { 
     Login : undefined,
     Signup : undefined,
@@ -18,6 +23,12 @@ export type  NavigationListType = {
     // },
 }
 
+export type RouterListType = {
+    Main : undefined,
+    TestPage : undefined,
+}
+
+
 export type StackPropsType = NativeStackScreenProps< //NavigationListType을 NativeStackScreenProps type에 종속시킵니다.
-    NavigationListType
+    RootNavigationListType & NavigationListType & RouterListType
 >

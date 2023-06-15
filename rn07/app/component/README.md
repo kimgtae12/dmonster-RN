@@ -139,8 +139,10 @@ App.tsx에서 Toast를 추가해야합니다.
 ## Interface
 - interface 관련 컴포넌트가 작성됩니다.
 
-- MarginComponent.tsx
+## BackHandler.tsx
 
-  ㄴ 컴포넌트 사이 margin을 넣어줄때 사용합니다. props는 mt(marginTop) mb(marginBottom) my(marginVertical)을 넣어줍니다.
-  ㄴ 타입은 undefined를 허용해두어서, 사용하고자하는 수치만 작성해주시면 됩니다.
+- 뒤로가기를 눌렀을때 앱이꺼지는 현상을 방지해주고, 이전스택으로 돌아갈 수 있도록 해줍니다.
 
+- isRoot가 true일때 뒤로가기를 두번누르면 앱이 종료됩니다.
+
+- 사용한 패키지는 react-native-exit-app 입니다.
