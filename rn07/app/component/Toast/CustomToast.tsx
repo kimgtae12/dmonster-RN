@@ -1,10 +1,10 @@
 import {Platform} from 'react-native';
-import Toast from 'react-native-toast-message';
+import Toast, { ToastPosition } from 'react-native-toast-message';
 
 const cusToast = (
   message: string,
-  duration?: any,
-  position?: any,
+  duration?: number,
+  position?: ToastPosition,
   offset?: number,
 ) => {
   //message   : 토스트 메세지
