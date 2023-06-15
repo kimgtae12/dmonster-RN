@@ -33,7 +33,7 @@ const LoginScreen = ({navigation}: StackPropsType) => {
   const idpwLogin = ({id, password}: LoginForm) => {
     // console.log(id, password);
     updateUserInfo({mt_id : id, mt_pw : password}); //Zustand Persist에 선언되어있는 updateUserInfo 메서드를 실행하여, asyncStorage에 저장합니다.
-    navigation.navigate('TestPage');
+    navigation.replace('Router');
   };
 
   const snsLogin = (loginType: LoginType) => {
@@ -53,9 +53,9 @@ const LoginScreen = ({navigation}: StackPropsType) => {
 
   React.useEffect(()=>{
     if(mt_id !== '' && mt_pw !== ''){ //로그인정보가 있다면 바로 테스트페이지로 동동합니다.
-      navigation.navigate('TestPage');
+      navigation.replace('Router');
     }
-  },[])
+  },[mt_id,mt_pw])
 
   return (
     <ScrollView style={{flex:1}}>
@@ -87,13 +87,13 @@ const LoginScreen = ({navigation}: StackPropsType) => {
       <Button title="로그인" onPress={handleSubmit(idpwLogin)} />
       <MarginCom mt={20} />
       <Button title="카카오" onPress={() => snsLogin('kakao')} />
-      <MarginCom mt={10} />
+      {/* <MarginCom mt={10} /> */}
 
       <Button title="구글" onPress={() => snsLogin('google')} />
-      <MarginCom mt={10} />
+      {/* <MarginCom mt={10} /> */}
 
       <Button title="애플" onPress={() => snsLogin('apple')} />
-      <MarginCom mt={10} />
+      {/* <MarginCom mt={10} /> */}
 
     </ScrollView>
   );
