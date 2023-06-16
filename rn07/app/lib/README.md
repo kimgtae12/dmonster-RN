@@ -1,4 +1,4 @@
-# 라이브러리 관련 코드를 작성하는곳
+# 라이브러리 관련 코드를 작성하는곳 - write by 김경태
 
 ## config
 - api 주소 및 react native 환경설정
