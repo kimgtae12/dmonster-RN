@@ -8,13 +8,13 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 */
 
 export type RootNavigationListType = {
-    auth : undefined,
-    Router : undefined,
+    auth : undefined, //로그인전 Router 구성
+    Router : undefined, //로인인 후 router 성성
 }
 
 export type  NavigationListType = { 
     Login : undefined,
-    Signup : undefined,
+    Signup : undefined, 
     TestPage : undefined,
     // TestPage : {
     //     mt_idx : string; mt_idx를 문자열로 받아옵니다. 필수값으로 선언합니다.
@@ -24,8 +24,8 @@ export type  NavigationListType = {
 }
 
 export type RouterListType = {
-    Main : undefined,
-    TestPage : undefined,
+    Main : undefined, //Router 최상위 페이지
+    TestPage : undefined, //테스트 페이지
 }
 
 

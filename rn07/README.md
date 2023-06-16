@@ -5,6 +5,10 @@
 빠른 개발을 위해 자주 사용하는 라이브러리를 합쳐놓았습니다.
 
 해당 템플릿은 TypeScript를 기반으로 제작되었습니다. Typescript의 기초적인 지식을 요구합니다.
+  - 각 tsx를 포함하는 폴더에 type파일을 지정해두었습니다.
+  - component 및 screen 폴더의 Common~Type.ts에는 공통적으로 사용하는 type을 작성해주시고 export하여 사용해주세요.
+  - 한 페이지에서만 사용하는 interface 혹은 type의 경우에는 해당페이지 import 밑에 선언해주시면됩니다.
+  
 
 ## Base Source By
 https://github.com/pksung1/fast-react-native
@@ -37,7 +41,7 @@ React Native 0.71.3
   - /auth.tsx : 인증(자동로그인), 로그인, 회원가입 등 로그인전에 사용하는 페이지들의 router를 설정하는 페이지입니다.
   - /index.tsx : auth 및 Router 등의 라우터를 담는 최상위 root router입니다.
   - /Router.tsx : 로그인 후 사용자에게 보여지는 route 들을 관리하는 페이지 입니다.
-  - /Main.tsx : 
+  - /Main.tsx : 로그인 후 Bottom Tab Navigation을 담고있는 최상위 페이지 입니다.
 - @/store : 앱 상태관리를 위한 redux store 입니다.
   - store는 zustand를 사용하고있습니다. 관련 사용법은 store폴더내의 readme를 참고해주세요.
 - @/themes : 테마 색상, 폰트등을 관리합니다.
