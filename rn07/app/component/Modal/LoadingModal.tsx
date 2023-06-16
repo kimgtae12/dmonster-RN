@@ -3,7 +3,7 @@ import {ActivityIndicator, View} from 'react-native'
 import Modal from 'react-native-modal'
 
 interface LoadingModalType {
-    isLoading : boolean;
+    isLoading : boolean; //로딩 유무 true일경우 loading 출력
 }
 
 /**

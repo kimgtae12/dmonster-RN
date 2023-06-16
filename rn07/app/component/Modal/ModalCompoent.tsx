@@ -2,9 +2,22 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
 import ButtonComponent from '../Button/ButtonComponent';
+import { CommonModalType } from '../ComponentCommonType';
+import { CustomText } from '@/theme/styles';
+
+type ModalComponentType = CommonModalType & {
+  content? : string, //배경색을 지정해줍니다.
+  type? : string, //modal action 타입을 지정해줍니다. 해당 컴포넌트에서는 type에 confirm 문자가 포함되었을경우 confirm창이 발생하도록 설계되었습니다.
+  fontSize? : number, //Modal Button fontSize를 지정해줍니다.
+  text? : string, //모달 내용에 들어가는 내용입니다.
+  leftText? : string, //type에 confirm문자가 들어갈경우 왼쪽 버튼에 들어가는 이름입니다.
+  rightText? : string, //type에 confirm문자가 들어갈경우 오른쪽 버튼에 들어가는 이름입니다.
+  leftOnPreff? : () => void; //confirm 왼쪽 버튼을 눌렀을때 발생하는 action 입니다.
+  rightOnPress? : () => void; //confrim 오른쪽 버튼을 눌렀을때 발생하는 action 입니다.
+}
 
 export default function ModalCompoent({
-  content = null,
+  content,
   visible = false,
   close = () => {},
   type = 'basic',
@@ -13,16 +26,8 @@ export default function ModalCompoent({
   leftText = '취소',
   rightText = '확인',
   rightOnPress = () => {},
-}) {
-  //content           : 배경색
-  //visible           : 모달 visible
-  //close             : 닫힘 event
-  //type              : 기본 or 커스텀 (basic | custom | confirm)
-  //fontSize          : 폰트 크기
-  //text              : 모달 내용
-  //leftText          : type 'confirm'일때 왼쪽 버튼 text
-  //rightText         : type 'basic'일땐 버튼 text, 'confirm'일땐 오른쪽 버튼
-  //rightOnPress      : type 'confirm'일때 오른쪽 버튼 이벤트
+} : ModalComponentType) {
+
 
   //State를 이용하여 Modal을 제어함
   const [isModalVisible, setModalVisible] = useState(false);
@@ -48,17 +53,12 @@ export default function ModalCompoent({
       <View style={styles.WhiteBoxView}>
         {/* 모달에 버튼 1개 */}
         {type === 'custom' && content}
-        {type === 'basic' && (
+        {!type.includes('confirm')  && (
           <>
             <View style={styles.basicView}>
-              <Text
-                style={{
-                  ...styles.basicText,
-                  fontSize: fontSize,
-                  textAlign: 'center',
-                }}>
+              <CustomText>
                 {text}
-              </Text>
+              </CustomText>
             </View>
             <ButtonComponent
               value={rightText}
@@ -73,17 +73,12 @@ export default function ModalCompoent({
         )}
 
         {/* 모달 버튼 2개 */}
-        {type === 'confirm' && (
+        {type.includes('confirm') && (
           <>
             <View style={styles.basicView}>
-              <Text
-                style={{
-                  ...styles.basicText,
-                  fontSize: fontSize,
-                  textAlign: 'center',
-                }}>
+              <CustomText>
                 {text}
-              </Text>
+              </CustomText>
             </View>
             <View style={styles.BottomContainer}>
               <View style={styles.flexButton}>

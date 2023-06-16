@@ -42,19 +42,19 @@ export type BoarderViewType = {
 }
 
 export type MarginComType = {
-    mt? : number,
-    mb? : number,
+    mt? : number, //margin top
+    mb? : number, //margin bottom
 }
 
 export type CustomTextType = MarginType & {
-    fs? : number,
-    fc? : string,
-    fw? : 'Thin' | 'ExtraLight' | 'Light' | 'Regular' | 'Medium' | 'SemiBold' | 'Bold' | 'ExtraBold',
+    fs? : number, //fontSize
+    fc? : string, //font color
+    fw? : 'Thin' | 'ExtraLight' | 'Light' | 'Regular' | 'Medium' | 'SemiBold' | 'Bold' | 'ExtraBold', //font weight
 }
 
 export type CustomTextInputType = MarginType & BoarderViewType & {
-    fs? : number,
-    fc? : string,
-    fw? : 'Thin' | 'ExtraLight' | 'Light' | 'Regular' | 'Medium' | 'SemiBold' | 'Bold' | 'ExtraBold',
+    fs? : number, // fontSize
+    fc? : string, // fontColor
+    fw? : 'Thin' | 'ExtraLight' | 'Light' | 'Regular' | 'Medium' | 'SemiBold' | 'Bold' | 'ExtraBold', //font Weight
     bgColor ? : string, //background color
 }
