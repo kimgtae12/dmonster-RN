@@ -1,4 +1,4 @@
-# 테마
+# 테마 - Write By 김경태
 
 ## colors.ts
 

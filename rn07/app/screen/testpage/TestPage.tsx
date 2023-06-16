@@ -7,7 +7,7 @@ import { LoadingModal } from '@/component/Modal/LoadingModal';
 import { useBearStore, useCountPersistStore } from '@/store';
 import { useLoadingStore } from '@/store/BearStore';
 import cusToast from '@/component/Toast/CustomToast';
-import { MarginCom, TextCom } from '@/theme/styles';
+import { MarginCom, CustomText } from '@/theme/styles';
 import { useUserInfoPersistStore } from '@/store/CountPersistStore';
 import { BackHandlerCom } from '@/component/BackHandler';
 import { colors } from '@/theme/color';
@@ -49,7 +49,7 @@ const TestPage = ({navigation}:StackPropsType) => {
       />
 
       <View style={{marginTop: 20}}>
-        <TextCom fontStyle='Light' fontColor={colors.BLACK}>Zustand persist에 저장되어있는 로그인정보</TextCom>
+        <CustomText fw='Light' fc={colors.BLACK}>Zustand persist에 저장되어있는 로그인정보</CustomText>
         <MarginCom mt={5} />
         <Text>mt_id : {mt_id}</Text>
         <Text>mt_pw : {mt_pw}</Text>

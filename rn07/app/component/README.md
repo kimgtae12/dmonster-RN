@@ -1,4 +1,4 @@
-# components 관리
+# components 관리 - Write By 김경태, 이예은
 
 ## Modal
 

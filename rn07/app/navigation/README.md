@@ -1,4 +1,4 @@
-# Navigation
+# Navigation - Write By 김경태
 
 ## index.tsx
 - RootStack을 선언하는 공간입니다.
