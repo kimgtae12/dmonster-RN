@@ -8,7 +8,7 @@
   - 각 tsx를 포함하는 폴더에 type파일을 지정해두었습니다.
   - component 및 screen 폴더의 Common~Type.ts에는 공통적으로 사용하는 type을 작성해주시고 export하여 사용해주세요.
   - 한 페이지에서만 사용하는 interface 혹은 type의 경우에는 해당페이지 import 밑에 선언해주시면됩니다.
-  
+  - typescript를 잘모르신다면 반드시 구글 혹은  typeGuide.ts를 정독하여주시고 학습해주세요. 가장 기초적인 지식들이므로, typescript를 사용하기위해선 꼭 학습해주세요.
 
 ## Base Source By
 https://github.com/pksung1/fast-react-native
