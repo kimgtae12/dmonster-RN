@@ -53,6 +53,8 @@ LoadingModal.tsx
    - **visible** : 부모 컴포넌트에서 props로 받아온 boolean값으로 작동합니다.
 
     modal의 visible 속성을 관리합니다.
+    
+    
 ## Button
 
 ButtonComponent.tsx
@@ -136,13 +138,15 @@ App.tsx에서 Toast를 추가해야합니다.
   - **RightOnPress** : 오른쪽 버튼 event입니다. 부모 컴포넌트에서 생성후 props로 전달합니다.
 
 
+
 ## Interface
+
 - interface 관련 컴포넌트가 작성됩니다.
 
 ## BackHandler.tsx
 
 - 뒤로가기를 눌렀을때 앱이 내려가는
- 현상을 방지해주고, 이전스택으로 돌아갈 수 있도록 해줍니다.
+  현상을 방지해주고, 이전스택으로 돌아갈 수 있도록 해줍니다.
 
 - isRoot가 true일때 뒤로가기를 두번누르면 앱이 종료됩니다.
 
@@ -151,6 +155,7 @@ App.tsx에서 Toast를 추가해야합니다.
 - native 설정은 https://github.com/wumke/react-native-exit-app 을 참고해주세요.
 
 - 사용법은 다음과 같습니다.
+
 ```
 //최상위 루트 screen일경우 ex) Home
 export const Main = () => {
@@ -171,3 +176,33 @@ export const MainChildren = () => {
   )
 }
 ```
+## Image
+
+Image.tsx
+
+react-native-modal을 import 해야 사용이 가능합니다.
+
+`npm install react-native-auto-height-image` 또는 `yarn add react-native-auto-height-image`
+
+- 이 구성 요소는 원격 이미지를 로드하고 이미지 높이를 제공된 너비에 맞는 이미지 치수로 자동 설정하는 간단한 방법을 제공합니다.
+
+```
+<AutoHeightImage
+  width={100}
+  source={{uri: 'http://placehold.it/350x150'}}
+/>
+```
+
+- 설명
+
+  - **width** : (필수) 이미지 넓이 입니다.
+
+  - **maxHeight** : 이미지 최대 높이입니다.
+
+  - **source** : (필수) 이미지 주소입니다.
+
+    `source = {{uri : '이미지 주소'}} / source = {require('내장 이미지 주소')}`
+
+    둘 중 하나 사용하시면 됩니다.
+
+- 더 많은 기능은 <https://github.com/vivaxy/react-native-auto-height-image>를 참조해주세요.
