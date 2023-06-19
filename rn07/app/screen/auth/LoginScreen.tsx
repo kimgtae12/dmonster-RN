@@ -1,10 +1,16 @@
-import {AuthStackProps} from '@/navigation/auth';
+
 import {useBearStore, useCountPersistStore} from '@/store';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {View, TextInput, Button, Text, TouchableOpacity} from 'react-native';
+
+import {View, TextInput, Button, Text, TouchableOpacity,ScrollView} from 'react-native';
 import ModalCompoent from '../../component/Modal/ModalCompoent';
+import { useLoadingStore } from '@/store/BearStore';
+import { LoadingModal } from '@/component/Modal/LoadingModal';
+import { StackPropsType } from '@/navigation/navigationType';
 import cusToast from '@/component/Toast/CustomToast';
+import { MarginCom } from '@/theme/styles';
+import { useUserInfoPersistStore } from '@/store/CountPersistStore';
 
 type LoginType = 'kakao' | 'naver' | 'google' | 'apple';
 
@@ -13,11 +19,10 @@ interface LoginForm {
   password: string;
 }
 
-const LoginScreen = ({navigation}: AuthStackProps) => {
-  const {increasePopulation, bears} = useBearStore(state => state); //bearStore에서 생성한 store 정보를 가져옵니다.
-  const {count, increase} = useCountPersistStore(state => state); //zustand persist에서 생성한 state및 생신 메서드를 가져옵니다.
+const LoginScreen = ({navigation}: StackPropsType) => {
 
-  const [modal, setModal] = useState(false);
+  //user 로그인 정보를 담아둔 Zustand Persist에서 데이터를 가져옵니다.
+  const {mt_id,mt_pw,updateUserInfo} = useUserInfoPersistStore(state => state);
 
   const {control, handleSubmit} = useForm<LoginForm>({
     defaultValues: {
@@ -26,9 +31,11 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
     },
   });
   const idpwLogin = ({id, password}: LoginForm) => {
-    console.log(id, password);
-    navigation.navigate('Signup');
+    // console.log(id, password);
+    updateUserInfo({mt_id : id, mt_pw : password}); //Zustand Persist에 선언되어있는 updateUserInfo 메서드를 실행하여, asyncStorage에 저장합니다.
+    navigation.replace('Router');
   };
+
   const snsLogin = (loginType: LoginType) => {
     switch (loginType) {
       case 'kakao':
@@ -44,8 +51,14 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
     }
   };
 
+  React.useEffect(()=>{
+    if(mt_id !== '' && mt_pw !== ''){ //로그인정보가 있다면 바로 테스트페이지로 동동합니다.
+      navigation.replace('Router');
+    }
+  },[mt_id,mt_pw])
+
   return (
-    <View>
+    <ScrollView style={{flex:1}}>
       <Controller
         control={control}
         name="id"
@@ -56,6 +69,7 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
             onChange={e => onChange(e.nativeEvent.text)}
           />
         )}
+        rules={{required:true}}
       />
 
       <Controller
@@ -68,41 +82,20 @@ const LoginScreen = ({navigation}: AuthStackProps) => {
             onChange={e => onChange(e.nativeEvent.text)}
           />
         )}
+        rules={{required:true}}
       />
       <Button title="로그인" onPress={handleSubmit(idpwLogin)} />
+      <MarginCom mt={20} />
       <Button title="카카오" onPress={() => snsLogin('kakao')} />
+      {/* <MarginCom mt={10} /> */}
+
       <Button title="구글" onPress={() => snsLogin('google')} />
+      {/* <MarginCom mt={10} /> */}
+
       <Button title="애플" onPress={() => snsLogin('apple')} />
+      {/* <MarginCom mt={10} /> */}
 
-      <View style={{marginTop: 20}}>
-        <Button
-          title="Increase Bears"
-          onPress={() => increasePopulation(3)} //bearStore 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다.
-        />
-        <Text>{bears}</Text>
-      </View>
-
-      <View style={{marginTop: 20}}>
-        <Button title="Increase Persist Count" onPress={increase} />
-        {/** zustand persist 내부에서 선언한 state 갱신 메서드를 가져와서 실행합니다. */}
-        <Text>{count}</Text>
-      </View>
-      <Button title="모달 open" onPress={() => setModal(true)} />
-      <ModalCompoent
-        visible={modal}
-        close={() => setModal(false)}
-        type={'confirm'}
-        rightOnPress={() => console.log('오른쪽 버튼 클릭')}
-      />
-      <Button
-        title="토스트 open"
-        onPress={() => cusToast('커스텀 토스트', 4000, 'bottom', 50)}
-      />
-      <Button
-        title="테스트 페이지"
-        onPress={() => navigation.navigate('TestPage')}
-      />
-    </View>
+    </ScrollView>
   );
 };
 

@@ -7,6 +7,13 @@ interface CountState {
   increase: () => void;
 }
 
+interface UserInfoState { //user 정보 타입 선언
+  mt_id : string;
+  mt_pw : string;
+  updateUserInfo : (userInfo:{mt_id : string, mt_pw : string}) => void;
+  deleteUserInfo : () => void;
+}
+
 const useCountPersistStore = create<CountState>()(
   persist( //persist 선언
     (set, get) => ({ 
@@ -20,4 +27,19 @@ const useCountPersistStore = create<CountState>()(
   ),
 );
 
-export {useCountPersistStore};
+const useUserInfoPersistStore = create<UserInfoState>()(
+  persist(
+    (set,get) => ({
+      mt_id : '',
+      mt_pw : '',
+      updateUserInfo : (userInfo) => set({mt_id : userInfo.mt_id, mt_pw : userInfo.mt_pw}),
+      deleteUserInfo : () => set({mt_id : '' , mt_pw : ''}),
+    }),
+    {
+      name : 'userinfo-storage',
+      storage: createJSONStorage(()=>AsyncStorage),
+    }
+  )
+)
+
+export {useCountPersistStore,useUserInfoPersistStore};
