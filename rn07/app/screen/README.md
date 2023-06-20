@@ -99,16 +99,62 @@ useEffect(() => {
   });
 ```
 
+### IOS
+
+- AppDelegate.mm 에 아래와 같은 코드 2줄을 추가해줍니다.
+
+```mm
+#import "AppDelegate.h"
+
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+#import "RNSplashScreen.h"  // here
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // ...other code
+
+    [RNSplashScreen show];  // here
+    // or
+    //[RNSplashScreen showSplash:@"LaunchScreen" inRootView:rootView];
+    return YES;
+}
+
+@end
+```
+
+- Xcode에서 Images.xcassets의 AppIcon 하단 빈 공간에서 마우스 오른쪽 클릭 후 New Image Set 을 클릭하고 이름을 LaunchScreen으로 수정 후 추출한 이미지에서 1x 2x 3x를 찾아서 넣어줍니다.
+
+- LaunchScreen.storyboard로 이동합니다.
+
+- 기존 텍스트를 모두 삭제합니다. (클릭 후 백스페이스를 누르면 삭제됩니다.)
+
+- 그 후 View 클릭 후 이미지를 클릭한 후 "Safe Area Layout Guide"를 체크 해제해줍니다.
+
+- 그 후 상단의 + 버튼을 눌러 Image로 검색해서 Image View를 기존 View 하단에 넣어주고 하단의 "Add New Constraints"를 클릭 해 Constrain to margins를 체크 풀어주고 모두 0으로 맞춰줍니다.
+
+- 그 후 Image를 LaunchScreen으로 수정하고 Content Mode는 Aspect Fill로 수정합니다.
+
 ## 앱 아이콘
 
-### 안드로이드 
+### 안드로이드
 
 - 먼저 1024x1024 사이즈의 이미지를 준비 해 줍니다.
 
 - 안드로이드 스튜디오를 열어 해당 폴더의 android 폴더를 열어줍니다.
 
-- ```[projectName]/app/res``` 폴더에서 마우스 우클릭하여 New > imageAsset 을 실행시켜줍니다.
+- `[projectName]/app/res` 폴더에서 마우스 우클릭하여 New > imageAsset 을 실행시켜줍니다.
 
-- Source Asset에서 준비해둔 이미지를 찾아 열어주고 'Next'버튼을 클릭합니다. 
+- Source Asset에서 준비해둔 이미지를 찾아 열어주고 'Next'버튼을 클릭합니다.
 
 - Res Directory에서 release / main / debug 각각 실행시켜줍니다.
+
+### IOS
+
+- 아이콘으로 사용할 이미지를 1024x1024 사이즈로 준비해주세요.
+
+- [imgae generator 사이트](https://appicon.co/)에서 다양한 사이즈에 아이콘을 생성해주세요.
+
+- xcode에서 [프로젝트명]>[프로젝트명]>Images>AppIcon에서 생성된 이미지를 하나하나 드래그해서 넣으면 됩니다.
