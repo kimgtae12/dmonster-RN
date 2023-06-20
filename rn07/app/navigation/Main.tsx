@@ -63,9 +63,9 @@ import { BackHandlerCom } from '@/component/BackHandler';
                                     <BottomMenuImage 
                                         source={ 
                                             selIndex === 1 ? 
-                                                require('../assets/images/b_menu2_on.png') 
+                                                require('../assets/images/b_menu3_on.png') 
                                             : 
-                                                require('../assets/images/b_menu2_off.png')
+                                                require('../assets/images/b_menu3_off.png')
                                             } 
                                         style={{width:30,height:30}} />
                                 </View>
@@ -90,9 +90,9 @@ import { BackHandlerCom } from '@/component/BackHandler';
                                     <BottomMenuImage 
                                         source={ 
                                             selIndex === 2 ? 
-                                                require('../assets/images/b_menu3_on.png') 
+                                                require('../assets/images/b_menu2_on.png') 
                                             : 
-                                                require('../assets/images/b_menu3_off.png')
+                                                require('../assets/images/b_menu2_off.png')
                                             } 
                                         style={{width:30,height:30}} />
                                 </View>

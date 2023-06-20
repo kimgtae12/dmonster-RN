@@ -1,6 +1,7 @@
 import HeaderComponents from '@/component/Header/HeaderComponent';
+import { StackPropsType } from '@/navigation/navigationType';
 import React, {useState} from 'react';
-import {View, Text, Dimensions} from 'react-native';
+import {View, Text, Dimensions, Alert} from 'react-native';
 import AutoHeightImage from 'react-native-auto-height-image';
 import MapView, {
   PROVIDER_GOOGLE,
@@ -8,7 +9,7 @@ import MapView, {
   Circle,
   Callout,
 } from 'react-native-maps';
-const GoogleMap = ({navigation}) => {
+const GoogleMap = ({navigation}:StackPropsType) => {
   const [coordinate, setCoordinate] = useState({
     latitude: 35.2439,
     longitude: 129.0906,
@@ -20,7 +21,6 @@ const GoogleMap = ({navigation}) => {
         backButton={true}
         title={'GoogleMap'}
         alramButton={false}
-        navigation={navigation}
       />
       <View style={{width: width, height: '100%'}}>
         <MapView
@@ -36,7 +36,11 @@ const GoogleMap = ({navigation}) => {
             coordinate={{
               latitude: coordinate.latitude,
               longitude: coordinate.longitude,
-            }}></Marker>
+            }}
+            onPress={(e)=>{
+              console.log(e);
+            }}
+            ></Marker>
         </MapView>
       </View>
     </View>
