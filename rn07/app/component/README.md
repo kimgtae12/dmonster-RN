@@ -235,7 +235,7 @@ const imagePickerOption = {
 };
 ```
 
-- 기능 설명
+- props 설명
 
   - **mediaType** : 'photo' 또는 'video'중 선택이 가능합니다. 'photo'는 사진 촬영입니다.
   - **cameraType** : 'back', 'front'중 선택이 가능하고 'back'은 후면카메라입니다.
@@ -248,10 +248,10 @@ const imagePickerOption = {
     <br>
 
 - callback 함수
-  - didCancel :
+  - didCancel : 사용자가 프로세스를 취소한 경우 true
   - errorCode : 모든 오류 코드에 대한 ErrorCode 확인
   - errorMessage : 오류 설명, 디버그 목적으로만 사용하십시오.
-  - assets :
+  - assets : 선택한 이미지의 배열
 
 ### 편집 기능 있는 카메라 사용 시
 
@@ -277,10 +277,22 @@ ImagePicker.openCamera({
 });
 ```
 
-- 기능 설명
+- props 설명
+
   - **cropping** : true 일경우 이미지 편집이 가능합니다. (기본값 : false),
-  - **width** : 자르기 옵션과 함께 사용할 때 결과 이미지의 너비
-  - **height** :
+  - **width** : 자르기 옵션을 함께 사용할 때 이미지의 넓이
+  - **height** : 자르기 옵션을 함께 사용할 때 이미지의 높이
   - **compressImageMaxWidth** : 이미지 압축시 최대 넓이 지정
   - **compressImageMaxHeight** : 이미지 압축시 최대 높이 지정
   - **compressImageQuality** : 이미지 압축시 품질입니다. (0에서 1까지, 1이 최고 품질)
+  - 더 많은 기능은 [여기](https://github.com/ivpusic/react-native-image-crop-picker#request-object)를 참조해주세요.
+
+- return 값
+  - **path** : 이미지 주소
+  - **width** : 이미지 가로 사이즈
+  - **height** : 이미지 세로 사이즈
+  - **mime** : 이미지 파일 유형
+  - **size** : 이미지 용량
+  - **modificationDate** : 이미지가 마지막으로 수정된 타임스탬프
+  - **data** : base24 주소
+  - 더 많은 리턴 값은 [여기](https://github.com/ivpusic/react-native-image-crop-picker#response-object)를 참조해주세요.
