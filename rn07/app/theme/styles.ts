@@ -6,23 +6,42 @@ import { BoarderViewType, MarginComType, CustomTextType, ViewBaseItemType, Custo
 //default 값들이 있으므로 필요한 props만 전달하여 사용하면 됩니다.
 export const BaseViewItem = styled.View<ViewBaseItemType>`
     flex:${({flex}) => flex ? flex : 1};
+    flex-direction: ${({flexDirection}) => flexDirection ? flexDirection : 'column'};
     justify-content: ${({justifyContent}) => justifyContent ? justifyContent : 'flex-start'};
     align-items: ${({alignItems}) => alignItems ? alignItems : 'flex-start'};
 
-    margin : ${({ma}) => ma ? ma+'px' : 0};
     margin-top : ${({mt}) => mt ? mt+'px' : 0};
     margin-bottom : ${({mb}) => mb ? mb+'px' : 0};
     margin-left : ${({ml}) => ml ? ml+'px' : 0};
     margin-right : ${({mr}) => mr ? mr+'px' : 0};
 
-    padding: ${({pa}) => pa ? pa+'pw' : 0};
     padding-left : ${({pl}) => pl ? pl+'px' : 0};
     padding-right : ${({pr}) => pr ? pr+'px' : 0};
     padding-top : ${({pt}) => pt ? pt+'px' : 0};
     padding-bottom : ${({pb}) => pb ? pb+'px' : 0};
 
+    ${({width}) => width &&
+        `width : ${typeof width === 'string' ? width : width+'px'};`
+    }
+    ${({height}) => height &&
+        `width : ${typeof height === 'string' ? height : height+'px'};`
+    }
+
     ${({bgColor}) => bgColor && `
-        background-color : ${bgColor}
+        background-color : ${bgColor};
+    `}
+
+    ${({ma}) => ma && `
+        margin-top : ${ma+'px'};
+        margin-bottom : ${ma+'px'};
+        margin-left : ${ma+'px'};
+        margin-right : ${ma+'px'};
+    `}
+    ${({pa}) => pa && `
+        margin-top : ${pa+'px'};
+        margin-bottom : ${pa+'px'};
+        margin-left : ${pa+'px'};
+        margin-right : ${pa+'px'};
     `}
 `
 
@@ -34,11 +53,11 @@ export const BorderView = styled(BaseViewItem)<BoarderViewType>`
     border-left-width : ${({blw}) => blw ? blw+'px' : 0};
     border-right-width : ${({brw}) => brw ? brw+'px' : 0};
 
-    ${({bc}) => bc && `border-color : ${bc}`};
-    ${({btc}) => btc && `border-top-color : ${btc}`};
-    ${({bbc}) => bbc && `border-bottom-color : ${bbc}`};
-    ${({blc}) => blc && `border-left-color : ${blc}`};
-    ${({brc}) => brc && `border-right-color : ${brc}`};
+    ${({bc}) => bc && `border-color : ${bc};`}
+    ${({btc}) => btc && `border-top-color : ${btc};`}
+    ${({bbc}) => bbc && `border-bottom-color : ${bbc};`}
+    ${({blc}) => blc && `border-left-color : ${blc};`}
+    ${({brc}) => brc && `border-right-color : ${brc};`}
 
     border-radius : ${({br}) => br ? br+'px' : 0};
     border-top-left-radius : ${({btlr}) => btlr ? btlr+'px' : 0};
@@ -79,17 +98,28 @@ export const CustomText = styled.Text<CustomTextType>`
     color : ${({fc}) => fc || colors.BLACK};
     font-family: ${({fw}) => fw || 'Regular' };
 
-    margin : ${({ma}) => ma ? ma+'px' : 0};
     margin-top : ${({mt}) => mt ? mt+'px' : 0};
     margin-bottom : ${({mb}) => mb ? mb+'px' : 0};
     margin-left : ${({ml}) => ml ? ml+'px' : 0};
     margin-right : ${({mr}) => mr ? mr+'px' : 0};
 
-    padding: ${({pa}) => pa ? pa+'pw' : 0};
     padding-left : ${({pl}) => pl ? pl+'px' : 0};
     padding-right : ${({pr}) => pr ? pr+'px' : 0};
     padding-top : ${({pt}) => pt ? pt+'px' : 0};
     padding-bottom : ${({pb}) => pb ? pb+'px' : 0};
+
+    ${({ma}) => ma && `
+        margin-top : ${ma+'px'};
+        margin-bottom : ${ma+'px'};
+        margin-left : ${ma+'px'};
+        margin-right : ${ma+'px'};
+    `}
+    ${({pa}) => pa && `
+        margin-top : ${pa+'px'};
+        margin-bottom : ${pa+'px'};
+        margin-left : ${pa+'px'};
+        margin-right : ${pa+'px'};
+    `}
 `
 
 export const CustomTextInput = styled.TextInput<CustomTextInputType>`
@@ -98,20 +128,31 @@ export const CustomTextInput = styled.TextInput<CustomTextInputType>`
     color : ${({fc}) => fc || colors.BLACK};
     font-family: ${({fw}) => fw || 'Regular' };
     
-    margin : ${({ma}) => ma ? ma+'px' : 0};
     margin-top : ${({mt}) => mt ? mt+'px' : 0};
     margin-bottom : ${({mb}) => mb ? mb+'px' : 0};
     margin-left : ${({ml}) => ml ? ml+'px' : 0};
     margin-right : ${({mr}) => mr ? mr+'px' : 0};
 
-    padding: ${({pa}) => pa ? pa+'pw' : 0};
     padding-left : ${({pl}) => pl ? pl+'px' : 0};
     padding-right : ${({pr}) => pr ? pr+'px' : 0};
     padding-top : ${({pt}) => pt ? pt+'px' : 0};
     padding-bottom : ${({pb}) => pb ? pb+'px' : 0};
 
+    ${({ma}) => ma && `
+        margin-top : ${ma+'px'};
+        margin-bottom : ${ma+'px'};
+        margin-left : ${ma+'px'};
+        margin-right : ${ma+'px'};
+    `}
+    ${({pa}) => pa && `
+        margin-top : ${pa+'px'};
+        margin-bottom : ${pa+'px'};
+        margin-left : ${pa+'px'};
+        margin-right : ${pa+'px'};
+    `}
+
     ${({bgColor}) => bgColor && `
-        background-color : ${bgColor}
+        background-color : ${bgColor};
     `}
 
     border-width : ${({bw}) => bw ? bw+'px' : 0};
@@ -120,11 +161,11 @@ export const CustomTextInput = styled.TextInput<CustomTextInputType>`
     border-left-width : ${({blw}) => blw ? blw+'px' : 0};
     border-right-width : ${({brw}) => brw ? brw+'px' : 0};
 
-    ${({bc}) => bc && `border-color : ${bc}`};
-    ${({btc}) => btc && `border-top-color : ${btc}`};
-    ${({bbc}) => bbc && `border-bottom-color : ${bbc}`};
-    ${({blc}) => blc && `border-left-color : ${blc}`};
-    ${({brc}) => brc && `border-right-color : ${brc}`};
+    ${({bc}) => bc && `border-color : ${bc};`}
+    ${({btc}) => btc && `border-top-color : ${btc};`}
+    ${({bbc}) => bbc && `border-bottom-color : ${bbc};`}
+    ${({blc}) => blc && `border-left-color : ${blc};`}
+    ${({brc}) => brc && `border-right-color : ${brc};`}
 
     border-radius : ${({br}) => br ? br+'px' : 0};
     border-top-left-radius : ${({btlr}) => btlr ? btlr+'px' : 0};
