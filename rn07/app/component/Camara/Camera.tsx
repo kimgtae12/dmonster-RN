@@ -15,9 +15,18 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {launchCamera} from 'react-native-image-picker';
 import {PERMISSIONS, check, request} from 'react-native-permissions';
 
+interface Option {
+  mediaType: string;
+  cameraType: string;
+  maxWidth: number;
+  maxHeight: number;
+  quality: number;
+  presentationStyle: string;
+}
+
 const Camera = ({navigation}) => {
   //카메라 옵션
-  const imagePickerOption = {
+  const imagePickerOption: Option = {
     mediaType: 'photo',
     cameraType: 'back',
     maxWidth: 500,
@@ -92,7 +101,7 @@ const Camera = ({navigation}) => {
       console.log(image);
     });
     //기본 카메라
-    // launchCamera(imagePickerOption, onPickImage);
+    launchCamera(imagePickerOption, onPickImage);
   };
 
   return (
