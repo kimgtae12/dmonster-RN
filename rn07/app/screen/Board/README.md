@@ -28,9 +28,9 @@ import { FlashList } from '@shopify/flash-list';
 exprot const MyComponent = () => {
 	
     const tempList = [
-    	{idx : '1' , 'title' : 'title1'}
-    	{idx : '2' , 'title' : 'title2'}
-    	{idx : '3' , 'title' : 'title3'}
+    	{idx : '1' , 'title' : 'title1'},
+    	{idx : '2' , 'title' : 'title2'},
+    	{idx : '3' , 'title' : 'title3'},
     	{idx : '4' , 'title' : 'title4'}
     ]
     

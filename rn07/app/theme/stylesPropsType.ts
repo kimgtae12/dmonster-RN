@@ -14,11 +14,15 @@ export type MarginType = {
 
 export type ViewBaseItemType = MarginType & {
     flex? : number,
+    flexDirection? : 'row' | 'column'
     justifyContent? : 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly',
     alignItems? : 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline',
 
 
     bgColor ? : string, //background color
+
+    width? : string | number, //width는 %일경우 string으로 넣어주세요. ex) '100%' , px일경우 number로 넣어주세요.
+    height? : string | number, //height %일경우 string으로 넣어주세요. ex) '100%' , px일경우 number로 넣어주세요.
 }
 
 export type BoarderViewType = {
