@@ -50,7 +50,6 @@ const TestPage = ({navigation}: StackPropsType) => {
         title={'TestPage'}
         alramButton={true}
       />
-
       <View style={{marginTop: 20}}>
         <CustomText fw="Light" fc={colors.BLACK}>
           Zustand persist에 저장되어있는 로그인정보
@@ -64,7 +63,6 @@ const TestPage = ({navigation}: StackPropsType) => {
           onPress={() => userLogout()} //userInfoPersistStore에 선언되어있는 deleteUserInfo 메서드를 실행합니다.
         />
       </View>
-
       <View style={{marginTop: 20}}>
         <Text>Zustand 상태 업데이트</Text>
         <MarginCom mt={5} />
@@ -89,7 +87,6 @@ const TestPage = ({navigation}: StackPropsType) => {
           loadingControllHandler();
         }}
       />
-
       {/* Modal component */}
       <ModalCompoent
         visible={modal}
@@ -108,9 +105,10 @@ const TestPage = ({navigation}: StackPropsType) => {
         onPress={() => navigation.navigate('GoogleMap')}
       />
       <MarginCom mt={20} />
+      <Button title="카메라" onPress={() => navigation.navigate('Camera')} />
+      <MarginCom mt={20} />
       <Button title="메인으로" onPress={() => navigation.navigate('Main')} />
       {/* </View> */}
-
       {/* Loading Modal Component */}
       <LoadingModal isLoading={isLoading} />
     </View>

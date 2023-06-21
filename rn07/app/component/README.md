@@ -43,18 +43,16 @@ ModalComponent.tsx
 
 - isVisible, onBackButtonPress, onBackdropPress등을 지원하며, 더 많은 기능은 <https://github.com/react-native-modal/react-native-modal> 를 참조해주세요.
 
-
 LoadingModal.tsx
- - 사용 패키지 : react-native-modal
 
- 
- - props 설명
+- 사용 패키지 : react-native-modal
 
-   - **visible** : 부모 컴포넌트에서 props로 받아온 boolean값으로 작동합니다.
+- props 설명
 
-    modal의 visible 속성을 관리합니다.
-    
-    
+  - **visible** : 부모 컴포넌트에서 props로 받아온 boolean값으로 작동합니다.
+
+  modal의 visible 속성을 관리합니다.
+
 ## Button
 
 ButtonComponent.tsx
@@ -137,8 +135,6 @@ App.tsx에서 Toast를 추가해야합니다.
 
   - **RightOnPress** : 오른쪽 버튼 event입니다. 부모 컴포넌트에서 생성후 props로 전달합니다.
 
-
-
 ## Interface
 
 - interface 관련 컴포넌트가 작성됩니다.
@@ -176,6 +172,7 @@ export const MainChildren = () => {
   )
 }
 ```
+
 ## Image
 
 Image.tsx
@@ -206,3 +203,84 @@ react-native-modal을 import 해야 사용이 가능합니다.
     둘 중 하나 사용하시면 됩니다.
 
 - 더 많은 기능은 <https://github.com/vivaxy/react-native-auto-height-image>를 참조해주세요.
+
+## Camera
+
+### 기본 카메라 사용 시
+
+react-native-image-picker을 import 해야 사용이 가능합니다.
+
+`npm install react-native-image-picker` 또는 `yarn add react-native-image-picker`
+
+- 카메라 촬영을 위해 launchCamera를 사용합니다. 아래 코드를 추가해주세요.
+
+```
+import {launchCamera} from 'react-native-image-picker';
+```
+
+```
+launchCamera(imagePickerOption, onPickImage);
+```
+
+- 카메라를 사용하기 위해 카메라 옵션을 추가해야합니다. 아래 코드를 참고해주세요.
+
+```
+const imagePickerOption = {
+  mediaType: 'photo',
+  cameraType: 'back',
+  maxWidth: 1000,
+  maxHeight: 1000,
+  quality: 1.0,
+  presentationStyle: 'fullScreen',
+};
+```
+
+- 기능 설명
+
+  - **mediaType** : 'photo' 또는 'video'중 선택이 가능합니다. 'photo'는 사진 촬영입니다.
+  - **cameraType** : 'back', 'front'중 선택이 가능하고 'back'은 후면카메라입니다.
+  - **maxWidth** : 이미지 가로 사이즈의 최대 사이즈 조절을 위한 기능입니다.
+  - **maxHeight** : 이미지 세로 사이즈 최대 사이즈 조절을 위한 기능입니다.
+  - **quality** : 1에 가까울수록 화질이 좋아집니다.
+  - **presentationStyle** : 선택기가 표시되는 방식을 제어합니다. 'pageSheet', 'fullScreen', 'pageSheet', 'formSheet', '팝오버', 'overFullScreen', 'overCurrentContext'. 기본값은 'currentContext'입니다.
+  - 더 많은 기능은 [여기](https://github.com/react-native-image-picker/react-native-image-picker#options)를 참조해주세요.
+    <br>
+    <br>
+
+- callback 함수
+  - didCancel :
+  - errorCode : 모든 오류 코드에 대한 ErrorCode 확인
+  - errorMessage : 오류 설명, 디버그 목적으로만 사용하십시오.
+  - assets :
+
+### 편집 기능 있는 카메라 사용 시
+
+react-native-image-crop-picker을 import 해야 사용이 가능합니다.
+
+`npm install react-native-image-crop-picker` 또는 `yarn add react-native-image-crop-picker`
+
+- 이미지 회전, 자르기 기능이 가능한 라이브러리입니다.
+
+카메라로 찍은 이미지 수정
+
+```
+ImagePicker.openCamera({
+  cropping: true,
+  width: 300,
+  height: 400,
+  compressImageMaxWidth: 1000,
+  compressImageMaxHeight: 1000,
+  compressImageQuality: 0.99,
+
+}).then(image => {
+  console.log(image);
+});
+```
+
+- 기능 설명
+  - **cropping** : true 일경우 이미지 편집이 가능합니다. (기본값 : false),
+  - **width** : 자르기 옵션과 함께 사용할 때 결과 이미지의 너비
+  - **height** :
+  - **compressImageMaxWidth** : 이미지 압축시 최대 넓이 지정
+  - **compressImageMaxHeight** : 이미지 압축시 최대 높이 지정
+  - **compressImageQuality** : 이미지 압축시 품질입니다. (0에서 1까지, 1이 최고 품질)
