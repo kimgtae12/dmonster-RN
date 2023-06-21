@@ -1,4 +1,5 @@
 import HeaderComponents from '@/component/Header/HeaderComponent';
+import { StackPropsType } from '@/navigation/navigationType';
 import React, {useState} from 'react';
 import {
   View,
@@ -12,19 +13,19 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
-import {launchCamera} from 'react-native-image-picker';
+import {Asset, CameraType, ImagePickerResponse, MediaType, PhotoQuality, launchCamera} from 'react-native-image-picker';
 import {PERMISSIONS, check, request} from 'react-native-permissions';
 
 interface Option {
-  mediaType: string;
-  cameraType: string;
+  mediaType: MediaType;
+  cameraType: CameraType | undefined;
   maxWidth: number;
   maxHeight: number;
-  quality: number;
-  presentationStyle: string;
+  quality: PhotoQuality | undefined;
+  presentationStyle: "fullScreen" | "currentContext" | "pageSheet" | "formSheet" | "popover" | "overFullScreen" | "overCurrentContext" | undefined;
 }
 
-const Camera = ({navigation}) => {
+const Camera = ({navigation}:StackPropsType) => {
   //카메라 옵션
   const imagePickerOption: Option = {
     mediaType: 'photo',
@@ -50,7 +51,7 @@ const Camera = ({navigation}) => {
       }
     });
     const grantedCheck = async () => {
-      const granted = await request(camara).then(item => {
+      const granted = await request(camara).then((item:string) => {
         console.log('item', item);
         if (item === 'granted') {
           CameraOn();
@@ -81,7 +82,7 @@ const Camera = ({navigation}) => {
   };
 
   const CameraOn = async () => {
-    const onPickImage = res => {
+    const onPickImage = (res : ImagePickerResponse) => {
       if (res.didCancel || !res) {
         return;
       } else {
@@ -110,7 +111,6 @@ const Camera = ({navigation}) => {
         backButton={true}
         title={''}
         alramButton={false}
-        navigation={navigation}
       />
       <TouchableOpacity style={styles.Text} onPress={handleCamera}>
         <Text>카메라 촬영</Text>
