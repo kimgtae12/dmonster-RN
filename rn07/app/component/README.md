@@ -177,7 +177,9 @@ export const MainChildren = () => {
 
 Image.tsx
 
-react-native-modal을 import 해야 사용이 가능합니다.
+### **react-native-auto-height-image**
+
+react-native-auto-height-image을 import 해야 사용이 가능합니다.
 
 `npm install react-native-auto-height-image` 또는 `yarn add react-native-auto-height-image`
 
@@ -204,6 +206,57 @@ react-native-modal을 import 해야 사용이 가능합니다.
 
 - 더 많은 기능은 <https://github.com/vivaxy/react-native-auto-height-image>를 참조해주세요.
 
+### **react-native-fast-image**
+
+react-native-fast-image을 import 해야 사용이 가능합니다.
+
+`npm install react-native-fast-image` 또는 `yarn add react-native-fast-image`
+
+```
+<FastImage
+  style={{width: 200, height: 200}}
+  source={{
+    uri: 'https://unsplash.it/400/400?image=1',
+    headers: {Authorization: 'someAuthToken'},
+    priority: FastImage.priority.normal,
+  }}
+  resizeMode={FastImage.resizeMode.contain}
+/>
+```
+
+- props 설명
+
+  - **style** : 이미지의 style 설정하는 props입니다.
+  - **resizeMode** : 이미지의 크기를 조절하는 props 입니다.
+
+    => `FastImage.resizeMode.contain` - 이미지의 크기를 균일하게 조정하여(이미지의 종횡비 유지) 이미지의 두 치수(너비 및 높이)가 뷰의 해당 치수(패딩 제외)와 같거나 작도록 합니다.
+
+    => `FastImage.resizeMode.cover` (기본값) - 이미지의 두 치수(너비 및 높이)가 뷰의 해당 치수(패딩 제외)와 같거나 크도록 이미지를 균일하게 조정합니다(이미지의 종횡비 유지).
+
+    => `FastImage.resizeMode.stretch` - 너비와 높이를 독립적으로 조정합니다. 이것은 src의 종횡비를 변경할 수 있습니다.
+
+    => `FastImage.resizeMode.center` - 이미지 크기를 조정하지 말고 중앙에 유지하십시오.
+
+  - **source** :
+
+    - **uri** : 이미지를 로드할 원격 URL입니다. 예) 'https://facebook.github.io/react/img/logo_og.png'.
+    - **headers** : 이미지를 로드할 헤더입니다. 예) { Authorization: 'someAuthToken' }.
+    - **priority** : 이미지의 우선순위를 설정할 수 있습니다.
+
+      => `FastImage.priority.low` - 낮은 우선 순위.
+
+      => `FastImage.priority.normal` (기본값) - 일반 우선 순위.
+
+      => `FastImage.priority.high` - 높은 우선 순위.
+
+    - **cache** :
+
+      => `FastImage.cacheControl.immutable` - (기본값) - URL이 변경되는 경우에만 업데이트됩니다.
+
+      => `FastImage.cacheControl.web` - 헤더를 사용하고 일반적인 캐싱 절차를 따릅니다.
+
+      => `FastImage.cacheControl.cacheOnly` - 캐시의 이미지만 표시하고 네트워크 요청을 하지 않습니다.
+
 ## Camera && Image
 
 ### 기본 카메라 , 기본 앨범 사용 시
@@ -224,6 +277,7 @@ import {launchCamera} from 'react-native-image-picker';
 launchCamera(imagePickerOption, onPickImage);
 
 ```
+
 - 카메라를 사용하기 위해 카메라 옵션을 추가해야합니다. 아래 코드를 참고해주세요.
 
 ```
@@ -240,6 +294,7 @@ const imagePickerOption = {
 **앨범**
 
 - 기본 앨범 사용을 위해 launchImageLibrary를 사용합니다. 아래 코드를 추가해주세요.
+
 ```
 import { launchImageLibrary } from 'react-native-image-picker';
 
@@ -247,6 +302,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 
 launchImageLibrary(options, onPickImage);
 ```
+
 - 앨범을 사용하기 위해 옵션을 추가해야합니다. 아래 코드를 참고해주세요.
 
 ```
@@ -258,7 +314,6 @@ const imagePickerOption = {
   includeBase64: Platform.OS === 'android',
 };
 ```
-
 
 - props 설명
 
@@ -338,6 +393,3 @@ ImagePicker.openPicker({
   - **modificationDate** : 이미지가 마지막으로 수정된 타임스탬프
   - **data** : base24 주소
   - 더 많은 리턴 값은 [여기](https://github.com/ivpusic/react-native-image-crop-picker#response-object)를 참조해주세요.
-
-
-

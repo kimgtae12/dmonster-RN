@@ -11,6 +11,7 @@ import {MarginCom, CustomText} from '@/theme/styles';
 import {useUserInfoPersistStore} from '@/store/CountPersistStore';
 import {BackHandlerCom} from '@/component/BackHandler';
 import {colors} from '@/theme/color';
+import {Image} from '@/component/Image/Image';
 
 //Navigation Component이므로 NativeStackScreenProps을 type으로 사용합니다.
 //props는 route 및 navigation을 가져올수있으며, params는 route의 하위객체에 존재합니다. route.params
@@ -112,6 +113,7 @@ const TestPage = ({navigation}: StackPropsType) => {
       <Button title="메인으로" onPress={() => navigation.navigate('Main')} />
       {/* </View> */}
       {/* Loading Modal Component */}
+      {/* <Image /> */}
       <LoadingModal isLoading={isLoading} />
     </View>
   );
