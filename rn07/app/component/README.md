@@ -204,24 +204,26 @@ react-native-modal을 import 해야 사용이 가능합니다.
 
 - 더 많은 기능은 <https://github.com/vivaxy/react-native-auto-height-image>를 참조해주세요.
 
-## Camera
+## Camera && Image
 
-### 기본 카메라 사용 시
+### 기본 카메라 , 기본 앨범 사용 시
 
 react-native-image-picker을 import 해야 사용이 가능합니다.
 
 `npm install react-native-image-picker` 또는 `yarn add react-native-image-picker`
 
+**카메라**
+
 - 카메라 촬영을 위해 launchCamera를 사용합니다. 아래 코드를 추가해주세요.
 
 ```
 import {launchCamera} from 'react-native-image-picker';
-```
 
-```
+...
+
 launchCamera(imagePickerOption, onPickImage);
-```
 
+```
 - 카메라를 사용하기 위해 카메라 옵션을 추가해야합니다. 아래 코드를 참고해주세요.
 
 ```
@@ -235,6 +237,29 @@ const imagePickerOption = {
 };
 ```
 
+**앨범**
+
+- 기본 앨범 사용을 위해 launchImageLibrary를 사용합니다. 아래 코드를 추가해주세요.
+```
+import { launchImageLibrary } from 'react-native-image-picker';
+
+...
+
+launchImageLibrary(options, onPickImage);
+```
+- 앨범을 사용하기 위해 옵션을 추가해야합니다. 아래 코드를 참고해주세요.
+
+```
+const imagePickerOption = {
+  mediaType: 'photo',
+  maxWidth: 500,
+  maxHeight: 500,
+  quality: 1,
+  includeBase64: Platform.OS === 'android',
+};
+```
+
+
 - props 설명
 
   - **mediaType** : 'photo' 또는 'video'중 선택이 가능합니다. 'photo'는 사진 촬영입니다.
@@ -243,6 +268,7 @@ const imagePickerOption = {
   - **maxHeight** : 이미지 세로 사이즈 최대 사이즈 조절을 위한 기능입니다.
   - **quality** : 1에 가까울수록 화질이 좋아집니다.
   - **presentationStyle** : 선택기가 표시되는 방식을 제어합니다. 'pageSheet', 'fullScreen', 'pageSheet', 'formSheet', '팝오버', 'overFullScreen', 'overCurrentContext'. 기본값은 'currentContext'입니다.
+  - **includeBase64** : 이미지의 base64 문자열입니다.
   - 더 많은 기능은 [여기](https://github.com/react-native-image-picker/react-native-image-picker#options)를 참조해주세요.
     <br>
     <br>
@@ -253,7 +279,7 @@ const imagePickerOption = {
   - errorMessage : 오류 설명, 디버그 목적으로만 사용하십시오.
   - assets : 선택한 이미지의 배열
 
-### 편집 기능 있는 카메라 사용 시
+### 편집 기능 있는 카메라, 이미지 사용 시
 
 react-native-image-crop-picker을 import 해야 사용이 가능합니다.
 
@@ -277,6 +303,21 @@ ImagePicker.openCamera({
 });
 ```
 
+앨범 이미지 수정
+
+```
+ImagePicker.openPicker({
+  mediaType: 'photo',
+  compressImageMaxWidth: 1000,
+  compressImageMaxHeight: 1000,
+  compressImageQuality: 0.99,
+  cropping: true,
+  includeBase64: Platform.OS === 'android',
+}).then(image => {
+  console.log('image', image);
+});
+```
+
 - props 설명
 
   - **cropping** : true 일경우 이미지 편집이 가능합니다. (기본값 : false),
@@ -285,6 +326,7 @@ ImagePicker.openCamera({
   - **compressImageMaxWidth** : 이미지 압축시 최대 넓이 지정
   - **compressImageMaxHeight** : 이미지 압축시 최대 높이 지정
   - **compressImageQuality** : 이미지 압축시 품질입니다. (0에서 1까지, 1이 최고 품질)
+  - **includeBase64** : 이미지의 base64 문자열입니다.
   - 더 많은 기능은 [여기](https://github.com/ivpusic/react-native-image-crop-picker#request-object)를 참조해주세요.
 
 - return 값
@@ -296,3 +338,6 @@ ImagePicker.openCamera({
   - **modificationDate** : 이미지가 마지막으로 수정된 타임스탬프
   - **data** : base24 주소
   - 더 많은 리턴 값은 [여기](https://github.com/ivpusic/react-native-image-crop-picker#response-object)를 참조해주세요.
+
+
+
