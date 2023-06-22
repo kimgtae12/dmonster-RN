@@ -61,6 +61,19 @@ export const RefreshMarginCom = styled(MarginCom)`
 
 - 이렇게 styled옆에 ()안에 재사용할 컴포넌트를 넣어주시면 됩니다. *props 선언도 함께 오게됩니다.
 
+- 스타일 컴포넌트는 일반 뷰 컴포넌트와 동일하게 사용가능합니다.
+
+```
+import {MarginCom} from './styles';
+
+export const SomeComponent = () => {
+    return(
+        <MarginCom mt={10} mb={10} />
+    )
+}
+
+```
+
 
 
 

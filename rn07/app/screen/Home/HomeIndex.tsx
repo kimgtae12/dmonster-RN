@@ -14,7 +14,6 @@ export const HomeIndex = ({navigation}:StackPropsType) => {
             <TouchableOpacity onPress={goTestPage}>
                 <Text>테스트 페이지로</Text>
             </TouchableOpacity>
-            
         </BaseViewItem>
     )
 }
