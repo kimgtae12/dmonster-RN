@@ -35,5 +35,10 @@ export default () => (
       component={Camera}
       options={{headerShown: false}}
     />
+    <Stack.Screen
+      name="ImagePick"
+      component={ImagePick}
+      options={{headerShown: false}}
+    />
   </Stack.Navigator>
 );

@@ -28,6 +28,7 @@ export type RouterListType = {
   TestPage: undefined; //테스트 페이지
   GoogleMap: undefined; //구글 맵 페이지
   Camera: undefined;
+  ImagePick: undefined;
 };
 
 export type StackPropsType = NativeStackScreenProps<
