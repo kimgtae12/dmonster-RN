@@ -110,6 +110,8 @@ const TestPage = ({navigation}: StackPropsType) => {
       <MarginCom mt={20} />
       <Button title="앨범" onPress={() => navigation.navigate('ImagePick')} />
       <MarginCom mt={20} />
+      <Button title="채팅" onPress={() => navigation.navigate('Chatting')} />
+      <MarginCom mt={20} />
       <Button title="메인으로" onPress={() => navigation.navigate('Main')} />
       {/* </View> */}
       {/* Loading Modal Component */}
