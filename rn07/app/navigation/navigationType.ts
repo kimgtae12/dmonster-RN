@@ -29,6 +29,8 @@ export type RouterListType = {
   GoogleMap: undefined; //구글 맵 페이지
   Camera: undefined;
   ImagePick: undefined;
+  Chatting: undefined;
+  ChattingDetail: undefined;
 };
 
 export type StackPropsType = NativeStackScreenProps<

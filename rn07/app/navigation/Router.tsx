@@ -10,6 +10,8 @@ import {Main} from './Main';
 import GoogleMap from '@/screen/Map/GoogleMap';
 import Camera from '@/component/Camara/Camera';
 import ImagePick from '@/component/ImagePick/ImagePick';
+import Chatting from '@/screen/testpage/Chatting';
+import ChattingDetail from '@/screen/testpage/ChattingDetail';
 
 /**
  * 로그인 및 인증, 회원가입등을 제외한 Screen이 모여있는 Router입니다.
@@ -38,6 +40,16 @@ export default () => (
     <Stack.Screen
       name="ImagePick"
       component={ImagePick}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="Chatting"
+      component={Chatting}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="ChattingDetail"
+      component={ChattingDetail}
       options={{headerShown: false}}
     />
   </Stack.Navigator>
